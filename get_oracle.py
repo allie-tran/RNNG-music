@@ -37,8 +37,8 @@ def unkify(tokens, words_dict):
                 result = result + '-CAPS'
             elif hasLower:
                 result = result + '-LC'
-            if hasDigit:
-                result = result + '-NUM'
+            # if hasDigit:
+            #     result = result + '-NUM'
             if hasDash:
                 result = result + '-DASH' 
             if lower[-1] == 's' and len(lower) >= 3:
@@ -168,6 +168,7 @@ def main():
     dev_file = open(sys.argv[2], 'r')
     dev_lines = dev_file.readlines()
     dev_file.close()
+
     words_list = get_dictionary.get_dict(lines) 
     line_ctr = 0
     # get the oracle for the train file

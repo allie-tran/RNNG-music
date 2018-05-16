@@ -16,6 +16,7 @@ def get_between_brackets(line, start_idx):
     return ''.join(output)
 
 def get_dict(lines):
+
     output = [] 
     for line in lines:
         #print 'curr line', line_strip
