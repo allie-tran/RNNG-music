@@ -1,5 +1,5 @@
 #include "nt-parser/nt-parser.h"
-oid InitCommandLine(int argc, char** argv, po::variables_map* conf) {
+void InitCommandLine(int argc, char** argv, po::variables_map* conf) {
   po::options_description opts("Configuration options");
   opts.add_options()
         ("training_data,T", po::value<string>(), "List of Transitions - Training corpus")
