@@ -38,7 +38,7 @@ def get_dict(lines):
             words_dict[terminal_split[1]] = words_dict[terminal_split[1]] + 1
     words_list = []
     for item in words_dict:
-        if words_dict[item] > 1:
+        if words_dict[item] >= 1:
             words_list.append(item) 
     return words_list 
 

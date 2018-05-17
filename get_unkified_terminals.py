@@ -11,6 +11,6 @@ for test_line in open(args.p):
         count = 1
     else:
         if count > 0:
-            count=count + 1
+            count = count + 1
         if count == 3:
             print test_line[:-1]
