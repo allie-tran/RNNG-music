@@ -1,0 +1,28 @@
+[cnn] random seed: 2731679894
+[cnn] allocating memory: 1700MB
+[cnn] memory allocation done.
+COMMAND LINE: build/nt-parser/nt-parser -x -T train.oracle -d dev.oracle -C dev.txt -P -t --lstm_input_dim 128 --hidden_dim 128 -D 0.2
+PARAMETER FILE: ntparse_pos_0_2_32_128_16_128-pid32027.params
+Loading top-down oracle from train.oracle [training] ...
+Loaded 1050 sentences
+    cumulative      action vocab size: 6
+    cumulative    terminal vocab size: 49
+    cumulative nonterminal vocab size: 4
+    cumulative         pos vocab size: 2
+Loading validation set
+Loading top-down oracle from dev.oracle [non-training] ...
+Loaded 150 sentences
+    cumulative      action vocab size: 6
+    cumulative    terminal vocab size: 49
+    cumulative nonterminal vocab size: 4
+    cumulative         pos vocab size: 2
+NUMBER OF TRAINING SENTENCES: 1050
+**SHUFFLE
+[epoch=0 eta=0.1 clips=100 updates=100] update #0 (epoch 0.0952381) per-action-ppl: 2.30281 per-input-ppl: 9.81135 per-sent-ppl: 1.45565e+87 err: 0.38818 [374.3ms per instance]
+Dev output in /tmp/parser_dev_eval.32027.txt
+Segmentation fault (core dumped)
+  **dev (iter=0 epoch=0.0952381)	llh=16502.9 ppl: 3.37623 f1: 0 err: 0.256891	[150 sents in 38147.5 ms]
+[epoch=0 eta=0.1 clips=100 updates=100] update #1 (epoch 0.190476) per-action-ppl: 1.31409 per-input-ppl: 2.1032 per-sent-ppl: 4.17901e+29 err: 0.134521 [387.18ms per instance]
+[epoch=0 eta=0.1 clips=100 updates=100] update #2 (epoch 0.285714) per-action-ppl: 1.18532 per-input-ppl: 1.58252 per-sent-ppl: 1.92487e+18 err: 0.0805605 [383.59ms per instance]
+[epoch=0 eta=0.1 clips=100 updates=100] update #3 (epoch 0.380952) per-action-ppl: 1.16274 per-input-ppl: 1.5155 per-sent-ppl: 8.59762e+16 err: 0.0701442 [399.48ms per instance]
+[epoch=0 eta=0.1 clips=100 updates=100] update #4 (epoch 0.47619) per-action-ppl: 1.14226 per-input-ppl: 1.43965 per-sent-ppl: 3.4827e+13 err: 0.0584396 [362.76ms per instance]
