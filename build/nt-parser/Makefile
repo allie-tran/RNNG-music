@@ -111,17 +111,6 @@ test/fast: test
 
 .PHONY : test/fast
 
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: install/strip
-
-.PHONY : install/strip/fast
-
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
@@ -132,6 +121,17 @@ install/local: preinstall
 install/local/fast: install/local
 
 .PHONY : install/local/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: install/strip
+
+.PHONY : install/strip/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -195,6 +195,21 @@ nt-parser-gen/fast:
 	cd /home/ubuntu/Duyen/rnng/build && $(MAKE) -f nt-parser/CMakeFiles/nt-parser-gen.dir/build.make nt-parser/CMakeFiles/nt-parser-gen.dir/build
 .PHONY : nt-parser-gen/fast
 
+# Convenience name for target.
+nt-parser/CMakeFiles/get_probability.dir/rule:
+	cd /home/ubuntu/Duyen/rnng/build && $(MAKE) -f CMakeFiles/Makefile2 nt-parser/CMakeFiles/get_probability.dir/rule
+.PHONY : nt-parser/CMakeFiles/get_probability.dir/rule
+
+# Convenience name for target.
+get_probability: nt-parser/CMakeFiles/get_probability.dir/rule
+
+.PHONY : get_probability
+
+# fast build rule for target.
+get_probability/fast:
+	cd /home/ubuntu/Duyen/rnng/build && $(MAKE) -f nt-parser/CMakeFiles/get_probability.dir/build.make nt-parser/CMakeFiles/get_probability.dir/build
+.PHONY : get_probability/fast
+
 eval.o: eval.cc.o
 
 .PHONY : eval.o
@@ -202,6 +217,7 @@ eval.o: eval.cc.o
 # target to build an object file
 eval.cc.o:
 	cd /home/ubuntu/Duyen/rnng/build && $(MAKE) -f nt-parser/CMakeFiles/nt-parser.dir/build.make nt-parser/CMakeFiles/nt-parser.dir/eval.cc.o
+	cd /home/ubuntu/Duyen/rnng/build && $(MAKE) -f nt-parser/CMakeFiles/get_probability.dir/build.make nt-parser/CMakeFiles/get_probability.dir/eval.cc.o
 .PHONY : eval.cc.o
 
 eval.i: eval.cc.i
@@ -211,6 +227,7 @@ eval.i: eval.cc.i
 # target to preprocess a source file
 eval.cc.i:
 	cd /home/ubuntu/Duyen/rnng/build && $(MAKE) -f nt-parser/CMakeFiles/nt-parser.dir/build.make nt-parser/CMakeFiles/nt-parser.dir/eval.cc.i
+	cd /home/ubuntu/Duyen/rnng/build && $(MAKE) -f nt-parser/CMakeFiles/get_probability.dir/build.make nt-parser/CMakeFiles/get_probability.dir/eval.cc.i
 .PHONY : eval.cc.i
 
 eval.s: eval.cc.s
@@ -220,7 +237,35 @@ eval.s: eval.cc.s
 # target to generate assembly for a file
 eval.cc.s:
 	cd /home/ubuntu/Duyen/rnng/build && $(MAKE) -f nt-parser/CMakeFiles/nt-parser.dir/build.make nt-parser/CMakeFiles/nt-parser.dir/eval.cc.s
+	cd /home/ubuntu/Duyen/rnng/build && $(MAKE) -f nt-parser/CMakeFiles/get_probability.dir/build.make nt-parser/CMakeFiles/get_probability.dir/eval.cc.s
 .PHONY : eval.cc.s
+
+get_probability.o: get_probability.cc.o
+
+.PHONY : get_probability.o
+
+# target to build an object file
+get_probability.cc.o:
+	cd /home/ubuntu/Duyen/rnng/build && $(MAKE) -f nt-parser/CMakeFiles/get_probability.dir/build.make nt-parser/CMakeFiles/get_probability.dir/get_probability.cc.o
+.PHONY : get_probability.cc.o
+
+get_probability.i: get_probability.cc.i
+
+.PHONY : get_probability.i
+
+# target to preprocess a source file
+get_probability.cc.i:
+	cd /home/ubuntu/Duyen/rnng/build && $(MAKE) -f nt-parser/CMakeFiles/get_probability.dir/build.make nt-parser/CMakeFiles/get_probability.dir/get_probability.cc.i
+.PHONY : get_probability.cc.i
+
+get_probability.s: get_probability.cc.s
+
+.PHONY : get_probability.s
+
+# target to generate assembly for a file
+get_probability.cc.s:
+	cd /home/ubuntu/Duyen/rnng/build && $(MAKE) -f nt-parser/CMakeFiles/get_probability.dir/build.make nt-parser/CMakeFiles/get_probability.dir/get_probability.cc.s
+.PHONY : get_probability.cc.s
 
 nt-parser-gen.o: nt-parser-gen.cc.o
 
@@ -284,6 +329,7 @@ oracle.o: oracle.cc.o
 oracle.cc.o:
 	cd /home/ubuntu/Duyen/rnng/build && $(MAKE) -f nt-parser/CMakeFiles/nt-parser.dir/build.make nt-parser/CMakeFiles/nt-parser.dir/oracle.cc.o
 	cd /home/ubuntu/Duyen/rnng/build && $(MAKE) -f nt-parser/CMakeFiles/nt-parser-gen.dir/build.make nt-parser/CMakeFiles/nt-parser-gen.dir/oracle.cc.o
+	cd /home/ubuntu/Duyen/rnng/build && $(MAKE) -f nt-parser/CMakeFiles/get_probability.dir/build.make nt-parser/CMakeFiles/get_probability.dir/oracle.cc.o
 .PHONY : oracle.cc.o
 
 oracle.i: oracle.cc.i
@@ -294,6 +340,7 @@ oracle.i: oracle.cc.i
 oracle.cc.i:
 	cd /home/ubuntu/Duyen/rnng/build && $(MAKE) -f nt-parser/CMakeFiles/nt-parser.dir/build.make nt-parser/CMakeFiles/nt-parser.dir/oracle.cc.i
 	cd /home/ubuntu/Duyen/rnng/build && $(MAKE) -f nt-parser/CMakeFiles/nt-parser-gen.dir/build.make nt-parser/CMakeFiles/nt-parser-gen.dir/oracle.cc.i
+	cd /home/ubuntu/Duyen/rnng/build && $(MAKE) -f nt-parser/CMakeFiles/get_probability.dir/build.make nt-parser/CMakeFiles/get_probability.dir/oracle.cc.i
 .PHONY : oracle.cc.i
 
 oracle.s: oracle.cc.s
@@ -304,6 +351,7 @@ oracle.s: oracle.cc.s
 oracle.cc.s:
 	cd /home/ubuntu/Duyen/rnng/build && $(MAKE) -f nt-parser/CMakeFiles/nt-parser.dir/build.make nt-parser/CMakeFiles/nt-parser.dir/oracle.cc.s
 	cd /home/ubuntu/Duyen/rnng/build && $(MAKE) -f nt-parser/CMakeFiles/nt-parser-gen.dir/build.make nt-parser/CMakeFiles/nt-parser-gen.dir/oracle.cc.s
+	cd /home/ubuntu/Duyen/rnng/build && $(MAKE) -f nt-parser/CMakeFiles/get_probability.dir/build.make nt-parser/CMakeFiles/get_probability.dir/oracle.cc.s
 .PHONY : oracle.cc.s
 
 pretrained.o: pretrained.cc.o
@@ -314,6 +362,7 @@ pretrained.o: pretrained.cc.o
 pretrained.cc.o:
 	cd /home/ubuntu/Duyen/rnng/build && $(MAKE) -f nt-parser/CMakeFiles/nt-parser.dir/build.make nt-parser/CMakeFiles/nt-parser.dir/pretrained.cc.o
 	cd /home/ubuntu/Duyen/rnng/build && $(MAKE) -f nt-parser/CMakeFiles/nt-parser-gen.dir/build.make nt-parser/CMakeFiles/nt-parser-gen.dir/pretrained.cc.o
+	cd /home/ubuntu/Duyen/rnng/build && $(MAKE) -f nt-parser/CMakeFiles/get_probability.dir/build.make nt-parser/CMakeFiles/get_probability.dir/pretrained.cc.o
 .PHONY : pretrained.cc.o
 
 pretrained.i: pretrained.cc.i
@@ -324,6 +373,7 @@ pretrained.i: pretrained.cc.i
 pretrained.cc.i:
 	cd /home/ubuntu/Duyen/rnng/build && $(MAKE) -f nt-parser/CMakeFiles/nt-parser.dir/build.make nt-parser/CMakeFiles/nt-parser.dir/pretrained.cc.i
 	cd /home/ubuntu/Duyen/rnng/build && $(MAKE) -f nt-parser/CMakeFiles/nt-parser-gen.dir/build.make nt-parser/CMakeFiles/nt-parser-gen.dir/pretrained.cc.i
+	cd /home/ubuntu/Duyen/rnng/build && $(MAKE) -f nt-parser/CMakeFiles/get_probability.dir/build.make nt-parser/CMakeFiles/get_probability.dir/pretrained.cc.i
 .PHONY : pretrained.cc.i
 
 pretrained.s: pretrained.cc.s
@@ -334,6 +384,7 @@ pretrained.s: pretrained.cc.s
 pretrained.cc.s:
 	cd /home/ubuntu/Duyen/rnng/build && $(MAKE) -f nt-parser/CMakeFiles/nt-parser.dir/build.make nt-parser/CMakeFiles/nt-parser.dir/pretrained.cc.s
 	cd /home/ubuntu/Duyen/rnng/build && $(MAKE) -f nt-parser/CMakeFiles/nt-parser-gen.dir/build.make nt-parser/CMakeFiles/nt-parser-gen.dir/pretrained.cc.s
+	cd /home/ubuntu/Duyen/rnng/build && $(MAKE) -f nt-parser/CMakeFiles/get_probability.dir/build.make nt-parser/CMakeFiles/get_probability.dir/pretrained.cc.s
 .PHONY : pretrained.cc.s
 
 # Help Target
@@ -348,12 +399,16 @@ help:
 	@echo "... edit_cache"
 	@echo "... test"
 	@echo "... nt-parser"
-	@echo "... nt-parser-gen"
-	@echo "... install/strip"
 	@echo "... install/local"
+	@echo "... install/strip"
+	@echo "... nt-parser-gen"
+	@echo "... get_probability"
 	@echo "... eval.o"
 	@echo "... eval.i"
 	@echo "... eval.s"
+	@echo "... get_probability.o"
+	@echo "... get_probability.i"
+	@echo "... get_probability.s"
 	@echo "... nt-parser-gen.o"
 	@echo "... nt-parser-gen.i"
 	@echo "... nt-parser-gen.s"

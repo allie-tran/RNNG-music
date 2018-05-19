@@ -20,6 +20,7 @@
 /home/ubuntu/Duyen/rnng/build/nt-parser/CMakeFiles/edit_cache.dir
 /home/ubuntu/Duyen/rnng/build/nt-parser/CMakeFiles/test.dir
 /home/ubuntu/Duyen/rnng/build/nt-parser/CMakeFiles/nt-parser.dir
-/home/ubuntu/Duyen/rnng/build/nt-parser/CMakeFiles/nt-parser-gen.dir
-/home/ubuntu/Duyen/rnng/build/nt-parser/CMakeFiles/install/strip.dir
 /home/ubuntu/Duyen/rnng/build/nt-parser/CMakeFiles/install/local.dir
+/home/ubuntu/Duyen/rnng/build/nt-parser/CMakeFiles/install/strip.dir
+/home/ubuntu/Duyen/rnng/build/nt-parser/CMakeFiles/nt-parser-gen.dir
+/home/ubuntu/Duyen/rnng/build/nt-parser/CMakeFiles/get_probability.dir

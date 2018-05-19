@@ -159,12 +159,14 @@ clean: cnn/cnn/CMakeFiles/cnn_shared.dir/clean
 # Convenience name for "all" pass in the directory.
 nt-parser/all: nt-parser/CMakeFiles/nt-parser.dir/all
 nt-parser/all: nt-parser/CMakeFiles/nt-parser-gen.dir/all
+nt-parser/all: nt-parser/CMakeFiles/get_probability.dir/all
 
 .PHONY : nt-parser/all
 
 # Convenience name for "clean" pass in the directory.
 nt-parser/clean: nt-parser/CMakeFiles/nt-parser.dir/clean
 nt-parser/clean: nt-parser/CMakeFiles/nt-parser-gen.dir/clean
+nt-parser/clean: nt-parser/CMakeFiles/get_probability.dir/clean
 
 .PHONY : nt-parser/clean
 
@@ -180,7 +182,7 @@ nt-parser/preinstall:
 nt-parser/CMakeFiles/nt-parser.dir/all: cnn/cnn/CMakeFiles/cnn.dir/all
 	$(MAKE) -f nt-parser/CMakeFiles/nt-parser.dir/build.make nt-parser/CMakeFiles/nt-parser.dir/depend
 	$(MAKE) -f nt-parser/CMakeFiles/nt-parser.dir/build.make nt-parser/CMakeFiles/nt-parser.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/Duyen/rnng/build/CMakeFiles --progress-num=59,60,61,62,63 "Built target nt-parser"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/Duyen/rnng/build/CMakeFiles --progress-num=64,65,66,67,68 "Built target nt-parser"
 .PHONY : nt-parser/CMakeFiles/nt-parser.dir/all
 
 # Include target in all.
@@ -217,7 +219,7 @@ clean: nt-parser/CMakeFiles/nt-parser.dir/clean
 nt-parser/CMakeFiles/nt-parser-gen.dir/all: cnn/cnn/CMakeFiles/cnn.dir/all
 	$(MAKE) -f nt-parser/CMakeFiles/nt-parser-gen.dir/build.make nt-parser/CMakeFiles/nt-parser-gen.dir/depend
 	$(MAKE) -f nt-parser/CMakeFiles/nt-parser-gen.dir/build.make nt-parser/CMakeFiles/nt-parser-gen.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/Duyen/rnng/build/CMakeFiles --progress-num=64,65,66,67 "Built target nt-parser-gen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/Duyen/rnng/build/CMakeFiles --progress-num=69,70,71,72 "Built target nt-parser-gen"
 .PHONY : nt-parser/CMakeFiles/nt-parser-gen.dir/all
 
 # Include target in all.
@@ -244,6 +246,43 @@ nt-parser/CMakeFiles/nt-parser-gen.dir/clean:
 
 # clean rule for target.
 clean: nt-parser/CMakeFiles/nt-parser-gen.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target nt-parser/CMakeFiles/get_probability.dir
+
+# All Build rule for target.
+nt-parser/CMakeFiles/get_probability.dir/all: cnn/cnn/CMakeFiles/cnn.dir/all
+	$(MAKE) -f nt-parser/CMakeFiles/get_probability.dir/build.make nt-parser/CMakeFiles/get_probability.dir/depend
+	$(MAKE) -f nt-parser/CMakeFiles/get_probability.dir/build.make nt-parser/CMakeFiles/get_probability.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/Duyen/rnng/build/CMakeFiles --progress-num=59,60,61,62,63 "Built target get_probability"
+.PHONY : nt-parser/CMakeFiles/get_probability.dir/all
+
+# Include target in all.
+all: nt-parser/CMakeFiles/get_probability.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+nt-parser/CMakeFiles/get_probability.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/Duyen/rnng/build/CMakeFiles 34
+	$(MAKE) -f CMakeFiles/Makefile2 nt-parser/CMakeFiles/get_probability.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/Duyen/rnng/build/CMakeFiles 0
+.PHONY : nt-parser/CMakeFiles/get_probability.dir/rule
+
+# Convenience name for target.
+get_probability: nt-parser/CMakeFiles/get_probability.dir/rule
+
+.PHONY : get_probability
+
+# clean rule for target.
+nt-parser/CMakeFiles/get_probability.dir/clean:
+	$(MAKE) -f nt-parser/CMakeFiles/get_probability.dir/build.make nt-parser/CMakeFiles/get_probability.dir/clean
+.PHONY : nt-parser/CMakeFiles/get_probability.dir/clean
+
+# clean rule for target.
+clean: nt-parser/CMakeFiles/get_probability.dir/clean
 
 .PHONY : clean
 

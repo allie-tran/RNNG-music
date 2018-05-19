@@ -792,10 +792,9 @@ cnn/cnn/libcnn_shared.so: cnn/cnn/CMakeFiles/cnn_shared.dir/shadow-params.cc.o
 cnn/cnn/libcnn_shared.so: cnn/cnn/CMakeFiles/cnn_shared.dir/tensor.cc.o
 cnn/cnn/libcnn_shared.so: cnn/cnn/CMakeFiles/cnn_shared.dir/training.cc.o
 cnn/cnn/libcnn_shared.so: cnn/cnn/CMakeFiles/cnn_shared.dir/build.make
-cnn/cnn/libcnn_shared.so: /usr/lib/x86_64-linux-gnu/libboost_program_options.so.1.58.0
-cnn/cnn/libcnn_shared.so: /usr/lib/x86_64-linux-gnu/libboost_iostreams.so.1.58.0
-cnn/cnn/libcnn_shared.so: /usr/lib/x86_64-linux-gnu/libboost_serialization.so.1.58.0
-cnn/cnn/libcnn_shared.so: /usr/lib/x86_64-linux-gnu/libboost_regex.so.1.58.0
+cnn/cnn/libcnn_shared.so: /usr/lib/libboost_program_options.so.1.67.0
+cnn/cnn/libcnn_shared.so: /usr/lib/libboost_iostreams.so.1.67.0
+cnn/cnn/libcnn_shared.so: /usr/lib/libboost_serialization.so.1.67.0
 cnn/cnn/libcnn_shared.so: cnn/cnn/CMakeFiles/cnn_shared.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ubuntu/Duyen/rnng/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Linking CXX shared library libcnn_shared.so"
 	cd /home/ubuntu/Duyen/rnng/build/cnn/cnn && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/cnn_shared.dir/link.txt --verbose=$(VERBOSE)

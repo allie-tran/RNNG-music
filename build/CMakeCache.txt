@@ -21,34 +21,28 @@ Boost_DIR:PATH=Boost_DIR-NOTFOUND
 Boost_INCLUDE_DIR:PATH=/usr/include
 
 //Boost iostreams library (debug)
-Boost_IOSTREAMS_LIBRARY_DEBUG:FILEPATH=/usr/lib/x86_64-linux-gnu/libboost_iostreams.so.1.58.0
+Boost_IOSTREAMS_LIBRARY_DEBUG:FILEPATH=/usr/lib/libboost_iostreams.so.1.67.0
 
 //Boost iostreams library (release)
-Boost_IOSTREAMS_LIBRARY_RELEASE:FILEPATH=/usr/lib/x86_64-linux-gnu/libboost_iostreams.so.1.58.0
+Boost_IOSTREAMS_LIBRARY_RELEASE:FILEPATH=/usr/lib/libboost_iostreams.so.1.67.0
 
 //Boost library directory DEBUG
-Boost_LIBRARY_DIR_DEBUG:PATH=/usr/lib/x86_64-linux-gnu
+Boost_LIBRARY_DIR_DEBUG:PATH=/usr/lib
 
 //Boost library directory RELEASE
-Boost_LIBRARY_DIR_RELEASE:PATH=/usr/lib/x86_64-linux-gnu
+Boost_LIBRARY_DIR_RELEASE:PATH=/usr/lib
 
 //Boost program_options library (debug)
-Boost_PROGRAM_OPTIONS_LIBRARY_DEBUG:FILEPATH=/usr/lib/x86_64-linux-gnu/libboost_program_options.so.1.58.0
+Boost_PROGRAM_OPTIONS_LIBRARY_DEBUG:FILEPATH=/usr/lib/libboost_program_options.so.1.67.0
 
 //Boost program_options library (release)
-Boost_PROGRAM_OPTIONS_LIBRARY_RELEASE:FILEPATH=/usr/lib/x86_64-linux-gnu/libboost_program_options.so.1.58.0
-
-//Boost regex library (debug)
-Boost_REGEX_LIBRARY_DEBUG:FILEPATH=/usr/lib/x86_64-linux-gnu/libboost_regex.so.1.58.0
-
-//Boost regex library (release)
-Boost_REGEX_LIBRARY_RELEASE:FILEPATH=/usr/lib/x86_64-linux-gnu/libboost_regex.so.1.58.0
+Boost_PROGRAM_OPTIONS_LIBRARY_RELEASE:FILEPATH=/usr/lib/libboost_program_options.so.1.67.0
 
 //Boost serialization library (debug)
-Boost_SERIALIZATION_LIBRARY_DEBUG:FILEPATH=/usr/lib/x86_64-linux-gnu/libboost_serialization.so.1.58.0
+Boost_SERIALIZATION_LIBRARY_DEBUG:FILEPATH=/usr/lib/libboost_serialization.so.1.67.0
 
 //Boost serialization library (release)
-Boost_SERIALIZATION_LIBRARY_RELEASE:FILEPATH=/usr/lib/x86_64-linux-gnu/libboost_serialization.so.1.58.0
+Boost_SERIALIZATION_LIBRARY_RELEASE:FILEPATH=/usr/lib/libboost_serialization.so.1.67.0
 
 //Path to a program.
 CMAKE_AR:FILEPATH=/usr/bin/ar
@@ -214,13 +208,13 @@ EIGEN3_INCLUDE_DIR:UNINITIALIZED=eigen
 cnn_BINARY_DIR:STATIC=/home/ubuntu/Duyen/rnng/build
 
 //Dependencies for the target
-cnn_LIB_DEPENDS:STATIC=general;/usr/lib/x86_64-linux-gnu/libboost_program_options.so.1.58.0;general;/usr/lib/x86_64-linux-gnu/libboost_iostreams.so.1.58.0;general;/usr/lib/x86_64-linux-gnu/libboost_serialization.so.1.58.0;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so.1.58.0;
+cnn_LIB_DEPENDS:STATIC=general;/usr/lib/libboost_program_options.so.1.67.0;general;/usr/lib/libboost_iostreams.so.1.67.0;general;/usr/lib/libboost_serialization.so.1.67.0;
 
 //Value Computed by CMake
 cnn_SOURCE_DIR:STATIC=/home/ubuntu/Duyen/rnng
 
 //Dependencies for the target
-cnn_shared_LIB_DEPENDS:STATIC=general;/usr/lib/x86_64-linux-gnu/libboost_program_options.so.1.58.0;general;/usr/lib/x86_64-linux-gnu/libboost_iostreams.so.1.58.0;general;/usr/lib/x86_64-linux-gnu/libboost_serialization.so.1.58.0;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so.1.58.0;
+cnn_shared_LIB_DEPENDS:STATIC=general;/usr/lib/libboost_program_options.so.1.67.0;general;/usr/lib/libboost_iostreams.so.1.67.0;general;/usr/lib/libboost_serialization.so.1.67.0;
 
 
 ########################
@@ -243,10 +237,6 @@ Boost_LIBRARY_DIR_RELEASE-ADVANCED:INTERNAL=1
 Boost_PROGRAM_OPTIONS_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: Boost_PROGRAM_OPTIONS_LIBRARY_RELEASE
 Boost_PROGRAM_OPTIONS_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: Boost_REGEX_LIBRARY_DEBUG
-Boost_REGEX_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: Boost_REGEX_LIBRARY_RELEASE
-Boost_REGEX_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: Boost_SERIALIZATION_LIBRARY_DEBUG
 Boost_SERIALIZATION_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: Boost_SERIALIZATION_LIBRARY_RELEASE
@@ -377,13 +367,13 @@ CMAKE_UNAME:INTERNAL=/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //Components requested for this build tree.
-_Boost_COMPONENTS_SEARCHED:INTERNAL=iostreams;program_options;regex;serialization
+_Boost_COMPONENTS_SEARCHED:INTERNAL=iostreams;program_options;serialization
 //Last used Boost_INCLUDE_DIR value.
 _Boost_INCLUDE_DIR_LAST:INTERNAL=/usr/include
 //Last used Boost_LIBRARY_DIR_DEBUG value.
-_Boost_LIBRARY_DIR_DEBUG_LAST:INTERNAL=/usr/lib/x86_64-linux-gnu
+_Boost_LIBRARY_DIR_DEBUG_LAST:INTERNAL=/usr/lib
 //Last used Boost_LIBRARY_DIR_RELEASE value.
-_Boost_LIBRARY_DIR_RELEASE_LAST:INTERNAL=/usr/lib/x86_64-linux-gnu
+_Boost_LIBRARY_DIR_RELEASE_LAST:INTERNAL=/usr/lib
 //Last used Boost_NAMESPACE value.
 _Boost_NAMESPACE_LAST:INTERNAL=boost
 //Last used Boost_USE_MULTITHREADED value.

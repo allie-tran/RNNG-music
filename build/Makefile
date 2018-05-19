@@ -217,6 +217,19 @@ nt-parser-gen/fast:
 	$(MAKE) -f nt-parser/CMakeFiles/nt-parser-gen.dir/build.make nt-parser/CMakeFiles/nt-parser-gen.dir/build
 .PHONY : nt-parser-gen/fast
 
+#=============================================================================
+# Target rules for targets named get_probability
+
+# Build rule for target.
+get_probability: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 get_probability
+.PHONY : get_probability
+
+# fast build rule for target.
+get_probability/fast:
+	$(MAKE) -f nt-parser/CMakeFiles/get_probability.dir/build.make nt-parser/CMakeFiles/get_probability.dir/build
+.PHONY : get_probability/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -234,6 +247,7 @@ help:
 	@echo "... cnn_shared"
 	@echo "... nt-parser"
 	@echo "... nt-parser-gen"
+	@echo "... get_probability"
 .PHONY : help
 
 

@@ -1,4 +1,68 @@
-#include "nt-parser/nt-parser.h"
+#include <cstdlib>
+#include <iostream>
+#include <vector>
+#include <fstream>
+#include <cmath>
+#include <chrono>
+#include <ctime>
+#include <unordered_set>
+#include <unordered_map>
+
+#include <execinfo.h>
+#include <unistd.h>
+#include <signal.h>
+
+#include <boost/archive/text_oarchive.hpp>
+#include <boost/archive/text_iarchive.hpp>
+#include <boost/program_options.hpp>
+
+#include "cnn/training.h"
+#include "cnn/cnn.h"
+#include "cnn/expr.h"
+#include "cnn/nodes.h"
+#include "cnn/lstm.h"
+#include "cnn/rnn.h"
+#include "cnn/dict.h"
+#include "cnn/cfsm-builder.h"
+
+#include "nt-parser/oracle.h"
+#include "nt-parser/pretrained.h"
+#include "nt-parser/compressed-fstream.h"
+#include "nt-parser/eval.h"
+
+// dictionaries
+cnn::Dict termdict, ntermdict, adict, posdict;
+
+volatile bool requested_stop = false;
+unsigned IMPLICIT_REDUCE_AFTER_SHIFT = 0;
+unsigned LAYERS = 2;
+unsigned INPUT_DIM = 40;
+unsigned HIDDEN_DIM = 60;
+unsigned ACTION_DIM = 36;
+unsigned PRETRAINED_DIM = 50;
+unsigned LSTM_INPUT_DIM = 60;
+unsigned POS_DIM = 10;
+
+float ALPHA = 1.f;
+unsigned N_SAMPLES = 1;
+unsigned ACTION_SIZE = 0;
+unsigned VOCAB_SIZE = 0;
+unsigned NT_SIZE = 0;
+float DROPOUT = 0.0f;
+unsigned POS_SIZE = 0;
+std::map<int,int> action2NTindex;  // pass in index of action NT(X), return index of X
+bool USE_POS = false;  // in discriminative parser, incorporate POS information in token embedding
+
+using namespace cnn::expr;
+using namespace cnn;
+using namespace std;
+namespace po = boost::program_options;
+
+
+vector<unsigned> possible_actions;
+unordered_map<unsigned, vector<float>> pretrained;
+vector<bool> singletons; // used during training
+
 void InitCommandLine(int argc, char** argv, po::variables_map* conf) {
   po::options_description opts("Configuration options");
   opts.add_options()

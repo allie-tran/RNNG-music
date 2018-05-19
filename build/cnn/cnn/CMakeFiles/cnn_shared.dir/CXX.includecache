@@ -289,16 +289,12 @@ cnn/shadow-params.h
 ../eigen/Eigen/Cholesky
 Core
 ../eigen/Eigen/Core
-Jacobi
-../eigen/Eigen/Jacobi
 src/Core/util/DisableStupidWarnings.h
 ../eigen/Eigen/src/Core/util/DisableStupidWarnings.h
 src/Cholesky/LLT.h
 ../eigen/Eigen/src/Cholesky/LLT.h
 src/Cholesky/LDLT.h
 ../eigen/Eigen/src/Cholesky/LDLT.h
-mkl_lapacke.h
-../eigen/Eigen/mkl_lapacke.h
 src/misc/lapacke.h
 ../eigen/Eigen/src/misc/lapacke.h
 src/Cholesky/LLT_LAPACKE.h
@@ -309,7 +305,7 @@ src/Core/util/ReenableStupidWarnings.h
 ../eigen/Eigen/Core
 src/Core/util/DisableStupidWarnings.h
 ../eigen/Eigen/src/Core/util/DisableStupidWarnings.h
-cuda_runtime.h
+math_functions.hpp
 -
 new
 -
@@ -385,8 +381,6 @@ iostream
 -
 intrin.h
 -
-SYCL/sycl.hpp
--
 src/Core/util/Constants.h
 ../eigen/Eigen/src/Core/util/Constants.h
 src/Core/util/Meta.h
@@ -399,10 +393,6 @@ src/Core/util/XprHelper.h
 ../eigen/Eigen/src/Core/util/XprHelper.h
 src/Core/util/Memory.h
 ../eigen/Eigen/src/Core/util/Memory.h
-src/Core/util/IntegralConstant.h
-../eigen/Eigen/src/Core/util/IntegralConstant.h
-src/Core/util/SymbolicIndex.h
-../eigen/Eigen/src/Core/util/SymbolicIndex.h
 src/Core/NumTraits.h
 ../eigen/Eigen/src/Core/NumTraits.h
 src/Core/MathFunctions.h
@@ -411,18 +401,12 @@ src/Core/GenericPacketMath.h
 ../eigen/Eigen/src/Core/GenericPacketMath.h
 src/Core/MathFunctionsImpl.h
 ../eigen/Eigen/src/Core/MathFunctionsImpl.h
-src/Core/arch/Default/ConjHelper.h
-../eigen/Eigen/src/Core/arch/Default/ConjHelper.h
 src/Core/arch/SSE/PacketMath.h
 ../eigen/Eigen/src/Core/arch/SSE/PacketMath.h
 src/Core/arch/AVX/PacketMath.h
 ../eigen/Eigen/src/Core/arch/AVX/PacketMath.h
 src/Core/arch/AVX512/PacketMath.h
 ../eigen/Eigen/src/Core/arch/AVX512/PacketMath.h
-src/Core/arch/SSE/MathFunctions.h
-../eigen/Eigen/src/Core/arch/SSE/MathFunctions.h
-src/Core/arch/AVX/MathFunctions.h
-../eigen/Eigen/src/Core/arch/AVX/MathFunctions.h
 src/Core/arch/AVX512/MathFunctions.h
 ../eigen/Eigen/src/Core/arch/AVX512/MathFunctions.h
 src/Core/arch/SSE/PacketMath.h
@@ -491,10 +475,6 @@ src/Core/functors/AssignmentFunctors.h
 ../eigen/Eigen/src/Core/functors/AssignmentFunctors.h
 src/Core/arch/CUDA/Complex.h
 ../eigen/Eigen/src/Core/arch/CUDA/Complex.h
-src/Core/util/IndexedViewHelper.h
-../eigen/Eigen/src/Core/util/IndexedViewHelper.h
-src/Core/ArithmeticSequence.h
-../eigen/Eigen/src/Core/ArithmeticSequence.h
 src/Core/IO.h
 ../eigen/Eigen/src/Core/IO.h
 src/Core/DenseCoeffsBase.h
@@ -559,8 +539,6 @@ src/Core/Block.h
 ../eigen/Eigen/src/Core/Block.h
 src/Core/VectorBlock.h
 ../eigen/Eigen/src/Core/VectorBlock.h
-src/Core/IndexedView.h
-../eigen/Eigen/src/Core/IndexedView.h
 src/Core/Transpose.h
 ../eigen/Eigen/src/Core/Transpose.h
 src/Core/DiagonalMatrix.h
@@ -729,8 +707,6 @@ src/Eigenvalues/GeneralizedEigenSolver.h
 ../eigen/Eigen/src/Eigenvalues/GeneralizedEigenSolver.h
 src/Eigenvalues/MatrixBaseEigenvalues.h
 ../eigen/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h
-mkl_lapacke.h
-../eigen/Eigen/mkl_lapacke.h
 src/misc/lapacke.h
 ../eigen/Eigen/src/misc/lapacke.h
 src/Eigenvalues/RealSchur_LAPACKE.h
@@ -851,8 +827,6 @@ src/LU/FullPivLU.h
 ../eigen/Eigen/src/LU/FullPivLU.h
 src/LU/PartialPivLU.h
 ../eigen/Eigen/src/LU/PartialPivLU.h
-mkl_lapacke.h
-../eigen/Eigen/mkl_lapacke.h
 src/misc/lapacke.h
 ../eigen/Eigen/src/misc/lapacke.h
 src/LU/PartialPivLU_LAPACKE.h
@@ -897,8 +871,6 @@ src/QR/ColPivHouseholderQR.h
 ../eigen/Eigen/src/QR/ColPivHouseholderQR.h
 src/QR/CompleteOrthogonalDecomposition.h
 ../eigen/Eigen/src/QR/CompleteOrthogonalDecomposition.h
-mkl_lapacke.h
-../eigen/Eigen/mkl_lapacke.h
 src/misc/lapacke.h
 ../eigen/Eigen/src/misc/lapacke.h
 src/QR/HouseholderQR_LAPACKE.h
@@ -927,8 +899,6 @@ src/SVD/JacobiSVD.h
 ../eigen/Eigen/src/SVD/JacobiSVD.h
 src/SVD/BDCSVD.h
 ../eigen/Eigen/src/SVD/BDCSVD.h
-mkl_lapacke.h
-../eigen/Eigen/mkl_lapacke.h
 src/misc/lapacke.h
 ../eigen/Eigen/src/misc/lapacke.h
 src/SVD/JacobiSVD_LAPACKE.h
@@ -1106,11 +1076,11 @@ src/Core/util/ReenableStupidWarnings.h
 
 ../eigen/Eigen/src/Cholesky/LLT_LAPACKE.h
 
-../eigen/Eigen/src/Core/ArithmeticSequence.h
-
 ../eigen/Eigen/src/Core/Array.h
 
 ../eigen/Eigen/src/Core/ArrayBase.h
+../plugins/CommonCwiseUnaryOps.h
+../eigen/Eigen/src/plugins/CommonCwiseUnaryOps.h
 ../plugins/MatrixCwiseUnaryOps.h
 ../eigen/Eigen/src/plugins/MatrixCwiseUnaryOps.h
 ../plugins/ArrayCwiseUnaryOps.h
@@ -1155,12 +1125,8 @@ src/Core/util/ReenableStupidWarnings.h
 ../eigen/Eigen/src/Core/CwiseUnaryView.h
 
 ../eigen/Eigen/src/Core/DenseBase.h
-../plugins/CommonCwiseUnaryOps.h
-../eigen/Eigen/src/plugins/CommonCwiseUnaryOps.h
 ../plugins/BlockMethods.h
 ../eigen/Eigen/src/plugins/BlockMethods.h
-../plugins/IndexedViewMethods.h
-../eigen/Eigen/src/plugins/IndexedViewMethods.h
 
 ../eigen/Eigen/src/Core/DenseCoeffsBase.h
 
@@ -1186,8 +1152,6 @@ src/Core/util/ReenableStupidWarnings.h
 
 ../eigen/Eigen/src/Core/IO.h
 
-../eigen/Eigen/src/Core/IndexedView.h
-
 ../eigen/Eigen/src/Core/Inverse.h
 
 ../eigen/Eigen/src/Core/Map.h
@@ -1201,6 +1165,8 @@ src/Core/util/ReenableStupidWarnings.h
 ../eigen/Eigen/src/Core/Matrix.h
 
 ../eigen/Eigen/src/Core/MatrixBase.h
+../plugins/CommonCwiseUnaryOps.h
+../eigen/Eigen/src/plugins/CommonCwiseUnaryOps.h
 ../plugins/CommonCwiseBinaryOps.h
 ../eigen/Eigen/src/plugins/CommonCwiseBinaryOps.h
 ../plugins/MatrixCwiseUnaryOps.h
@@ -1294,8 +1260,6 @@ src/Core/util/ReenableStupidWarnings.h
 
 ../eigen/Eigen/src/Core/arch/CUDA/TypeCasting.h
 
-../eigen/Eigen/src/Core/arch/Default/ConjHelper.h
-
 ../eigen/Eigen/src/Core/arch/Default/Settings.h
 
 ../eigen/Eigen/src/Core/arch/NEON/Complex.h
@@ -1382,10 +1346,6 @@ stdint.h
 
 ../eigen/Eigen/src/Core/util/ForwardDeclarations.h
 
-../eigen/Eigen/src/Core/util/IndexedViewHelper.h
-
-../eigen/Eigen/src/Core/util/IntegralConstant.h
-
 ../eigen/Eigen/src/Core/util/MKL_support.h
 mkl.h
 -
@@ -1413,8 +1373,6 @@ cstdint
 ../eigen/Eigen/src/Core/util/ReenableStupidWarnings.h
 
 ../eigen/Eigen/src/Core/util/StaticAssert.h
-
-../eigen/Eigen/src/Core/util/SymbolicIndex.h
 
 ../eigen/Eigen/src/Core/util/XprHelper.h
 
@@ -1720,10 +1678,6 @@ lapacke_mangling.h
 
 ../eigen/Eigen/src/plugins/CommonCwiseUnaryOps.h
 
-../eigen/Eigen/src/plugins/IndexedViewMethods.h
-IndexedViewMethods.h
-../eigen/Eigen/src/plugins/IndexedViewMethods.h
-
 ../eigen/Eigen/src/plugins/MatrixCwiseBinaryOps.h
 
 ../eigen/Eigen/src/plugins/MatrixCwiseUnaryOps.h
@@ -1731,9 +1685,7 @@ IndexedViewMethods.h
 ../eigen/unsupported/Eigen/CXX11/Tensor
 ../../../Eigen/Core
 ../eigen/Eigen/Core
-CL/sycl.hpp
--
-iostream
+SYCL/sycl.hpp
 -
 map
 -
@@ -1755,11 +1707,7 @@ cstddef
 -
 cstring
 -
-windows.h
--
 stdint.h
--
-unistd.h
 -
 random
 -
@@ -1769,8 +1717,6 @@ mach/mach_time.h
 -
 time.h
 -
-libxsmm.h
-../eigen/unsupported/Eigen/CXX11/libxsmm.h
 ThreadPool
 ../eigen/unsupported/Eigen/CXX11/ThreadPool
 iostream
@@ -1883,8 +1829,6 @@ src/Tensor/TensorAssign.h
 ../eigen/unsupported/Eigen/CXX11/src/Tensor/TensorAssign.h
 src/Tensor/TensorScan.h
 ../eigen/unsupported/Eigen/CXX11/src/Tensor/TensorScan.h
-src/Tensor/TensorTrace.h
-../eigen/unsupported/Eigen/CXX11/src/Tensor/TensorTrace.h
 src/Tensor/TensorSycl.h
 ../eigen/unsupported/Eigen/CXX11/src/Tensor/TensorSycl.h
 src/Tensor/TensorExecutor.h
@@ -1943,8 +1887,6 @@ src/ThreadPool/ThreadLocal.h
 ../eigen/unsupported/Eigen/CXX11/src/ThreadPool/ThreadLocal.h
 src/ThreadPool/ThreadYield.h
 ../eigen/unsupported/Eigen/CXX11/src/ThreadPool/ThreadYield.h
-src/ThreadPool/ThreadCancel.h
-../eigen/unsupported/Eigen/CXX11/src/ThreadPool/ThreadCancel.h
 src/ThreadPool/EventCount.h
 ../eigen/unsupported/Eigen/CXX11/src/ThreadPool/EventCount.h
 src/ThreadPool/RunQueue.h
@@ -1964,8 +1906,6 @@ Eigen/src/Core/util/ReenableStupidWarnings.h
 
 ../eigen/unsupported/Eigen/CXX11/src/Tensor/TensorArgMax.h
 
-../eigen/unsupported/Eigen/CXX11/src/Tensor/TensorArgMaxSycl.h
-
 ../eigen/unsupported/Eigen/CXX11/src/Tensor/TensorAssign.h
 
 ../eigen/unsupported/Eigen/CXX11/src/Tensor/TensorBase.h
@@ -1984,15 +1924,11 @@ Eigen/src/Core/util/ReenableStupidWarnings.h
 
 ../eigen/unsupported/Eigen/CXX11/src/Tensor/TensorContractionMapper.h
 
-../eigen/unsupported/Eigen/CXX11/src/Tensor/TensorContractionSycl.h
-
 ../eigen/unsupported/Eigen/CXX11/src/Tensor/TensorContractionThreadPool.h
 
 ../eigen/unsupported/Eigen/CXX11/src/Tensor/TensorConversion.h
 
 ../eigen/unsupported/Eigen/CXX11/src/Tensor/TensorConvolution.h
-
-../eigen/unsupported/Eigen/CXX11/src/Tensor/TensorConvolutionSycl.h
 
 ../eigen/unsupported/Eigen/CXX11/src/Tensor/TensorCostModel.h
 
@@ -2099,16 +2035,8 @@ TensorSyclExprConstructor.h
 ../eigen/unsupported/Eigen/CXX11/src/Tensor/TensorSyclExprConstructor.h
 TensorReductionSycl.h
 ../eigen/unsupported/Eigen/CXX11/src/Tensor/TensorReductionSycl.h
-TensorArgMaxSycl.h
-../eigen/unsupported/Eigen/CXX11/src/Tensor/TensorArgMaxSycl.h
-TensorConvolutionSycl.h
-../eigen/unsupported/Eigen/CXX11/src/Tensor/TensorConvolutionSycl.h
 TensorSyclRun.h
 ../eigen/unsupported/Eigen/CXX11/src/Tensor/TensorSyclRun.h
-TensorSyclFunctors.h
-../eigen/unsupported/Eigen/CXX11/src/Tensor/TensorSyclFunctors.h
-TensorContractionSycl.h
-../eigen/unsupported/Eigen/CXX11/src/Tensor/TensorContractionSycl.h
 
 ../eigen/unsupported/Eigen/CXX11/src/Tensor/TensorSyclConvertToDeviceExpression.h
 
@@ -2118,8 +2046,6 @@ TensorContractionSycl.h
 
 ../eigen/unsupported/Eigen/CXX11/src/Tensor/TensorSyclExtractFunctors.h
 
-../eigen/unsupported/Eigen/CXX11/src/Tensor/TensorSyclFunctors.h
-
 ../eigen/unsupported/Eigen/CXX11/src/Tensor/TensorSyclLeafCount.h
 
 ../eigen/unsupported/Eigen/CXX11/src/Tensor/TensorSyclPlaceHolderExpr.h
@@ -2127,8 +2053,6 @@ TensorContractionSycl.h
 ../eigen/unsupported/Eigen/CXX11/src/Tensor/TensorSyclRun.h
 
 ../eigen/unsupported/Eigen/CXX11/src/Tensor/TensorSyclTuple.h
-
-../eigen/unsupported/Eigen/CXX11/src/Tensor/TensorTrace.h
 
 ../eigen/unsupported/Eigen/CXX11/src/Tensor/TensorTraits.h
 
@@ -2143,8 +2067,6 @@ TensorContractionSycl.h
 ../eigen/unsupported/Eigen/CXX11/src/ThreadPool/RunQueue.h
 
 ../eigen/unsupported/Eigen/CXX11/src/ThreadPool/SimpleThreadPool.h
-
-../eigen/unsupported/Eigen/CXX11/src/ThreadPool/ThreadCancel.h
 
 ../eigen/unsupported/Eigen/CXX11/src/ThreadPool/ThreadEnvironment.h
 

@@ -143,10 +143,9 @@ nt-parser/nt-parser-gen: nt-parser/CMakeFiles/nt-parser-gen.dir/oracle.cc.o
 nt-parser/nt-parser-gen: nt-parser/CMakeFiles/nt-parser-gen.dir/pretrained.cc.o
 nt-parser/nt-parser-gen: nt-parser/CMakeFiles/nt-parser-gen.dir/build.make
 nt-parser/nt-parser-gen: cnn/cnn/libcnn.a
-nt-parser/nt-parser-gen: /usr/lib/x86_64-linux-gnu/libboost_program_options.so.1.58.0
-nt-parser/nt-parser-gen: /usr/lib/x86_64-linux-gnu/libboost_iostreams.so.1.58.0
-nt-parser/nt-parser-gen: /usr/lib/x86_64-linux-gnu/libboost_serialization.so.1.58.0
-nt-parser/nt-parser-gen: /usr/lib/x86_64-linux-gnu/libboost_regex.so.1.58.0
+nt-parser/nt-parser-gen: /usr/lib/libboost_program_options.so.1.67.0
+nt-parser/nt-parser-gen: /usr/lib/libboost_iostreams.so.1.67.0
+nt-parser/nt-parser-gen: /usr/lib/libboost_serialization.so.1.67.0
 nt-parser/nt-parser-gen: nt-parser/CMakeFiles/nt-parser-gen.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ubuntu/Duyen/rnng/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable nt-parser-gen"
 	cd /home/ubuntu/Duyen/rnng/build/nt-parser && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/nt-parser-gen.dir/link.txt --verbose=$(VERBOSE)
