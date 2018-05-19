@@ -1,8 +1,8 @@
-[cnn] random seed: 2731679894
+[cnn] random seed: 1064322101
 [cnn] allocating memory: 1700MB
 [cnn] memory allocation done.
 COMMAND LINE: build/nt-parser/nt-parser -x -T train.oracle -d dev.oracle -C dev.txt -P -t --lstm_input_dim 128 --hidden_dim 128 -D 0.2
-PARAMETER FILE: ntparse_pos_0_2_32_128_16_128-pid32027.params
+PARAMETER FILE: ntparse_pos_0_2_32_128_16_128-pid6251.params
 Loading top-down oracle from train.oracle [training] ...
 Loaded 1050 sentences
     cumulative      action vocab size: 6
@@ -18,11 +18,123 @@ Loaded 150 sentences
     cumulative         pos vocab size: 2
 NUMBER OF TRAINING SENTENCES: 1050
 **SHUFFLE
-[epoch=0 eta=0.1 clips=100 updates=100] update #0 (epoch 0.0952381) per-action-ppl: 2.30281 per-input-ppl: 9.81135 per-sent-ppl: 1.45565e+87 err: 0.38818 [374.3ms per instance]
-Dev output in /tmp/parser_dev_eval.32027.txt
-Segmentation fault (core dumped)
-  **dev (iter=0 epoch=0.0952381)	llh=16502.9 ppl: 3.37623 f1: 0 err: 0.256891	[150 sents in 38147.5 ms]
-[epoch=0 eta=0.1 clips=100 updates=100] update #1 (epoch 0.190476) per-action-ppl: 1.31409 per-input-ppl: 2.1032 per-sent-ppl: 4.17901e+29 err: 0.134521 [387.18ms per instance]
-[epoch=0 eta=0.1 clips=100 updates=100] update #2 (epoch 0.285714) per-action-ppl: 1.18532 per-input-ppl: 1.58252 per-sent-ppl: 1.92487e+18 err: 0.0805605 [383.59ms per instance]
-[epoch=0 eta=0.1 clips=100 updates=100] update #3 (epoch 0.380952) per-action-ppl: 1.16274 per-input-ppl: 1.5155 per-sent-ppl: 8.59762e+16 err: 0.0701442 [399.48ms per instance]
-[epoch=0 eta=0.1 clips=100 updates=100] update #4 (epoch 0.47619) per-action-ppl: 1.14226 per-input-ppl: 1.43965 per-sent-ppl: 3.4827e+13 err: 0.0584396 [362.76ms per instance]
+[epoch=0 eta=0.1 clips=100 updates=100] update #0 (epoch 0.0952381) per-action-ppl: 2.1157 per-input-ppl: 7.77982 per-sent-ppl: 2.02922e+78 err: 0.361456 [376.55ms per instance]
+Dev output in /tmp/parser_dev_eval.6251.txt
+  **dev (iter=0 epoch=0.0952381)	llh=10037 ppl: 2.09599 f1: 0 err: 0.10782	[150 sents in 33239.4 ms]
+[epoch=0 eta=0.1 clips=100 updates=100] update #1 (epoch 0.190476) per-action-ppl: 1.25817 per-input-ppl: 1.86843 per-sent-ppl: 8.03954e+24 err: 0.10833 [389.04ms per instance]
+[epoch=0 eta=0.1 clips=100 updates=100] update #2 (epoch 0.285714) per-action-ppl: 1.1769 per-input-ppl: 1.55237 per-sent-ppl: 3.29582e+17 err: 0.0761589 [387.24ms per instance]
+[epoch=0 eta=0.1 clips=100 updates=100] update #3 (epoch 0.380952) per-action-ppl: 1.16409 per-input-ppl: 1.52035 per-sent-ppl: 1.16006e+17 err: 0.0680175 [403.35ms per instance]
+[epoch=0 eta=0.1 clips=100 updates=100] update #4 (epoch 0.47619) per-action-ppl: 1.1482 per-input-ppl: 1.46025 per-sent-ppl: 1.175e+14 err: 0.0572452 [365.29ms per instance]
+[epoch=0 eta=0.1 clips=100 updates=100] update #5 (epoch 0.571429) per-action-ppl: 1.13663 per-input-ppl: 1.42274 per-sent-ppl: 8.57064e+13 err: 0.0560856 [390.83ms per instance]
+[epoch=0 eta=0.1 clips=100 updates=100] update #6 (epoch 0.666667) per-action-ppl: 1.12046 per-input-ppl: 1.3584 per-sent-ppl: 1.53747e+12 err: 0.0481942 [384.88ms per instance]
+[epoch=0 eta=0.1 clips=100 updates=100] update #7 (epoch 0.761905) per-action-ppl: 1.11295 per-input-ppl: 1.33653 per-sent-ppl: 1.30317e+11 err: 0.0454108 [372.58ms per instance]
+[epoch=0 eta=0.1 clips=100 updates=100] update #8 (epoch 0.857143) per-action-ppl: 1.09537 per-input-ppl: 1.28549 per-sent-ppl: 3.12958e+09 err: 0.0379968 [372.91ms per instance]
+[epoch=0 eta=0.1 clips=100 updates=100] update #9 (epoch 0.952381) per-action-ppl: 1.09732 per-input-ppl: 1.29341 per-sent-ppl: 6.61392e+09 err: 0.0363054 [378.86ms per instance]
+**SHUFFLE
+[epoch=1 eta=0.0952381 clips=100 updates=100] update #10 (epoch 1.04762) per-action-ppl: 1.08211 per-input-ppl: 1.24152 per-sent-ppl: 3.44056e+08 err: 0.0301108 [388.39ms per instance]
+[epoch=1 eta=0.0952381 clips=97 updates=100] update #11 (epoch 1.14286) per-action-ppl: 1.08802 per-input-ppl: 1.25845 per-sent-ppl: 1.21322e+09 err: 0.0310143 [387.68ms per instance]
+[epoch=1 eta=0.0952381 clips=95 updates=100] update #12 (epoch 1.2381) per-action-ppl: 1.0677 per-input-ppl: 1.19451 per-sent-ppl: 3.56082e+07 err: 0.0250895 [413.89ms per instance]
+[epoch=1 eta=0.0952381 clips=99 updates=100] update #13 (epoch 1.33333) per-action-ppl: 1.06899 per-input-ppl: 1.19986 per-sent-ppl: 7.08557e+06 err: 0.0232607 [368.14ms per instance]
+[epoch=1 eta=0.0952381 clips=97 updates=100] update #14 (epoch 1.42857) per-action-ppl: 1.08405 per-input-ppl: 1.24229 per-sent-ppl: 3.51672e+08 err: 0.031127 [380.66ms per instance]
+[epoch=1 eta=0.0952381 clips=99 updates=100] update #15 (epoch 1.52381) per-action-ppl: 1.07697 per-input-ppl: 1.2233 per-sent-ppl: 5.42587e+07 err: 0.026982 [374.49ms per instance]
+[epoch=1 eta=0.0952381 clips=93 updates=100] update #16 (epoch 1.61905) per-action-ppl: 1.06965 per-input-ppl: 1.20311 per-sent-ppl: 2.18696e+07 err: 0.0237033 [391.57ms per instance]
+[epoch=1 eta=0.0952381 clips=94 updates=100] update #17 (epoch 1.71429) per-action-ppl: 1.07482 per-input-ppl: 1.21764 per-sent-ppl: 3.9582e+07 err: 0.0267695 [378.6ms per instance]
+[epoch=1 eta=0.0952381 clips=87 updates=100] update #18 (epoch 1.80952) per-action-ppl: 1.05972 per-input-ppl: 1.17153 per-sent-ppl: 859333 err: 0.0206733 [368.19ms per instance]
+[epoch=1 eta=0.0952381 clips=93 updates=100] update #19 (epoch 1.90476) per-action-ppl: 1.06866 per-input-ppl: 1.19991 per-sent-ppl: 5.87337e+06 err: 0.0224542 [365.88ms per instance]
+[epoch=1 eta=0.0952381 clips=87 updates=100] update #20 (epoch 2) per-action-ppl: 1.06189 per-input-ppl: 1.17736 per-sent-ppl: 2.60173e+06 err: 0.0198398 [383.62ms per instance]
+**SHUFFLE
+[epoch=2 eta=0.0909091 clips=83 updates=100] update #21 (epoch 2.09524) per-action-ppl: 1.05331 per-input-ppl: 1.15235 per-sent-ppl: 365556 err: 0.0170701 [384.64ms per instance]
+[epoch=2 eta=0.0909091 clips=92 updates=100] update #22 (epoch 2.19048) per-action-ppl: 1.05239 per-input-ppl: 1.14957 per-sent-ppl: 560270 err: 0.0174369 [403.55ms per instance]
+[epoch=2 eta=0.0909091 clips=82 updates=100] update #23 (epoch 2.28571) per-action-ppl: 1.04654 per-input-ppl: 1.13241 per-sent-ppl: 102525 err: 0.0139968 [395.85ms per instance]
+[epoch=2 eta=0.0909091 clips=78 updates=100] update #24 (epoch 2.38095) per-action-ppl: 1.05442 per-input-ppl: 1.15394 per-sent-ppl: 269392 err: 0.0179699 [368.49ms per instance]
+[epoch=2 eta=0.0909091 clips=83 updates=100] update #25 (epoch 2.47619) per-action-ppl: 1.05866 per-input-ppl: 1.16625 per-sent-ppl: 1.15528e+06 err: 0.0191499 [382.35ms per instance]
+Dev output in /tmp/parser_dev_eval.6251.txt
+  **dev (iter=25 epoch=2.47619)	llh=1563.69 ppl: 1.1222 f1: 0 err: 0.0131929	[150 sents in 37197 ms]
+[epoch=2 eta=0.0909091 clips=85 updates=100] update #26 (epoch 2.57143) per-action-ppl: 1.04998 per-input-ppl: 1.14244 per-sent-ppl: 61473.9 err: 0.016851 [353.49ms per instance]
+[epoch=2 eta=0.0909091 clips=77 updates=100] update #27 (epoch 2.66667) per-action-ppl: 1.04321 per-input-ppl: 1.12051 per-sent-ppl: 76270.4 err: 0.0144104 [415.63ms per instance]
+[epoch=2 eta=0.0909091 clips=81 updates=100] update #28 (epoch 2.7619) per-action-ppl: 1.05198 per-input-ppl: 1.14791 per-sent-ppl: 127947 err: 0.0177533 [362.51ms per instance]
+[epoch=2 eta=0.0909091 clips=89 updates=100] update #29 (epoch 2.85714) per-action-ppl: 1.06271 per-input-ppl: 1.18499 per-sent-ppl: 1.2626e+06 err: 0.0186588 [359.54ms per instance]
+[epoch=2 eta=0.0909091 clips=69 updates=100] update #30 (epoch 2.95238) per-action-ppl: 1.04432 per-input-ppl: 1.12747 per-sent-ppl: 35030.6 err: 0.0133433 [375.53ms per instance]
+**SHUFFLE
+[epoch=3 eta=0.0869565 clips=83 updates=100] update #31 (epoch 3.04762) per-action-ppl: 1.0537 per-input-ppl: 1.15496 per-sent-ppl: 568810 err: 0.017843 [394.63ms per instance]
+[epoch=3 eta=0.0869565 clips=77 updates=100] update #32 (epoch 3.14286) per-action-ppl: 1.04558 per-input-ppl: 1.13015 per-sent-ppl: 27857.9 err: 0.0155917 [357.61ms per instance]
+[epoch=3 eta=0.0869565 clips=81 updates=100] update #33 (epoch 3.2381) per-action-ppl: 1.03486 per-input-ppl: 1.09879 per-sent-ppl: 5061.59 err: 0.012495 [387.52ms per instance]
+[epoch=3 eta=0.0869565 clips=73 updates=100] update #34 (epoch 3.33333) per-action-ppl: 1.03951 per-input-ppl: 1.11059 per-sent-ppl: 21755.6 err: 0.0116378 [404.78ms per instance]
+[epoch=3 eta=0.0869565 clips=79 updates=100] update #35 (epoch 3.42857) per-action-ppl: 1.04358 per-input-ppl: 1.12332 per-sent-ppl: 26492.4 err: 0.0135282 [388.02ms per instance]
+[epoch=3 eta=0.0869565 clips=76 updates=100] update #36 (epoch 3.52381) per-action-ppl: 1.04122 per-input-ppl: 1.1168 per-sent-ppl: 16997 err: 0.0149706 [365.88ms per instance]
+[epoch=3 eta=0.0869565 clips=73 updates=100] update #37 (epoch 3.61905) per-action-ppl: 1.04375 per-input-ppl: 1.12395 per-sent-ppl: 58177.2 err: 0.0135815 [389.17ms per instance]
+[epoch=3 eta=0.0869565 clips=74 updates=100] update #38 (epoch 3.71429) per-action-ppl: 1.04249 per-input-ppl: 1.12119 per-sent-ppl: 21675 err: 0.0132116 [364.39ms per instance]
+[epoch=3 eta=0.0869565 clips=70 updates=100] update #39 (epoch 3.80952) per-action-ppl: 1.03377 per-input-ppl: 1.09486 per-sent-ppl: 3493.01 err: 0.0110731 [373.31ms per instance]
+[epoch=3 eta=0.0869565 clips=75 updates=100] update #40 (epoch 3.90476) per-action-ppl: 1.03303 per-input-ppl: 1.0919 per-sent-ppl: 3617.75 err: 0.0103915 [383.08ms per instance]
+[epoch=3 eta=0.0869565 clips=64 updates=100] update #41 (epoch 4) per-action-ppl: 1.03025 per-input-ppl: 1.08415 per-sent-ppl: 1414.58 err: 0.00866708 [369.93ms per instance]
+**SHUFFLE
+[epoch=4 eta=0.0833333 clips=69 updates=100] update #42 (epoch 4.09524) per-action-ppl: 1.0388 per-input-ppl: 1.11124 per-sent-ppl: 6803.13 err: 0.0107847 [351.56ms per instance]
+[epoch=4 eta=0.0833333 clips=72 updates=100] update #43 (epoch 4.19048) per-action-ppl: 1.03779 per-input-ppl: 1.10736 per-sent-ppl: 5827.15 err: 0.0119791 [354.44ms per instance]
+[epoch=4 eta=0.0833333 clips=65 updates=100] update #44 (epoch 4.28571) per-action-ppl: 1.03234 per-input-ppl: 1.09106 per-sent-ppl: 2335.97 err: 0.00993024 [370.43ms per instance]
+[epoch=4 eta=0.0833333 clips=57 updates=100] update #45 (epoch 4.38095) per-action-ppl: 1.03592 per-input-ppl: 1.10125 per-sent-ppl: 5467.56 err: 0.0107011 [370.36ms per instance]
+[epoch=4 eta=0.0833333 clips=67 updates=100] update #46 (epoch 4.47619) per-action-ppl: 1.03356 per-input-ppl: 1.09411 per-sent-ppl: 1869.63 err: 0.00977042 [346.9ms per instance]
+[epoch=4 eta=0.0833333 clips=76 updates=100] update #47 (epoch 4.57143) per-action-ppl: 1.03508 per-input-ppl: 1.09955 per-sent-ppl: 5043.86 err: 0.0112028 [374.21ms per instance]
+[epoch=4 eta=0.0833333 clips=65 updates=100] update #48 (epoch 4.66667) per-action-ppl: 1.02643 per-input-ppl: 1.07367 per-sent-ppl: 554.88 err: 0.00862816 [367.65ms per instance]
+[epoch=4 eta=0.0833333 clips=70 updates=100] update #49 (epoch 4.7619) per-action-ppl: 1.02596 per-input-ppl: 1.07179 per-sent-ppl: 661.597 err: 0.00820707 [384.59ms per instance]
+[epoch=4 eta=0.0833333 clips=66 updates=100] update #50 (epoch 4.85714) per-action-ppl: 1.024 per-input-ppl: 1.06608 per-sent-ppl: 513.097 err: 0.00702994 [400.54ms per instance]
+Dev output in /tmp/parser_dev_eval.6251.txt
+  **dev (iter=50 epoch=4.85714)	llh=687.966 ppl: 1.05203 f1: 0 err: 0.00573247	[150 sents in 36064.4 ms]
+[epoch=4 eta=0.0833333 clips=70 updates=100] update #51 (epoch 4.95238) per-action-ppl: 1.03587 per-input-ppl: 1.10071 per-sent-ppl: 8140.34 err: 0.0114268 [388.42ms per instance]
+**SHUFFLE
+[epoch=5 eta=0.08 clips=67 updates=100] update #52 (epoch 5.04762) per-action-ppl: 1.03384 per-input-ppl: 1.09443 per-sent-ppl: 3904.92 err: 0.0105043 [378.4ms per instance]
+[epoch=5 eta=0.08 clips=73 updates=100] update #53 (epoch 5.14286) per-action-ppl: 1.02936 per-input-ppl: 1.08221 per-sent-ppl: 1027.69 err: 0.00901352 [364.12ms per instance]
+[epoch=5 eta=0.08 clips=69 updates=100] update #54 (epoch 5.2381) per-action-ppl: 1.0264 per-input-ppl: 1.07479 per-sent-ppl: 682.808 err: 0.00866475 [379.88ms per instance]
+[epoch=5 eta=0.08 clips=51 updates=100] update #55 (epoch 5.33333) per-action-ppl: 1.02532 per-input-ppl: 1.07171 per-sent-ppl: 378.809 err: 0.00741334 [359.64ms per instance]
+[epoch=5 eta=0.08 clips=64 updates=100] update #56 (epoch 5.42857) per-action-ppl: 1.02715 per-input-ppl: 1.07568 per-sent-ppl: 939.243 err: 0.00817844 [387.96ms per instance]
+[epoch=5 eta=0.08 clips=72 updates=100] update #57 (epoch 5.52381) per-action-ppl: 1.0258 per-input-ppl: 1.07049 per-sent-ppl: 882.489 err: 0.00833834 [405.72ms per instance]
+[epoch=5 eta=0.08 clips=70 updates=100] update #58 (epoch 5.61905) per-action-ppl: 1.02754 per-input-ppl: 1.07732 per-sent-ppl: 552.481 err: 0.00873269 [353.37ms per instance]
+[epoch=5 eta=0.08 clips=68 updates=100] update #59 (epoch 5.71429) per-action-ppl: 1.02657 per-input-ppl: 1.07427 per-sent-ppl: 930.477 err: 0.00790393 [395.47ms per instance]
+[epoch=5 eta=0.08 clips=69 updates=100] update #60 (epoch 5.80952) per-action-ppl: 1.02986 per-input-ppl: 1.0826 per-sent-ppl: 1598.26 err: 0.00853508 [380.61ms per instance]
+[epoch=5 eta=0.08 clips=66 updates=100] update #61 (epoch 5.90476) per-action-ppl: 1.02683 per-input-ppl: 1.07651 per-sent-ppl: 356.533 err: 0.00774949 [336.32ms per instance]
+[epoch=5 eta=0.08 clips=62 updates=100] update #62 (epoch 6) per-action-ppl: 1.02417 per-input-ppl: 1.06644 per-sent-ppl: 286.904 err: 0.00730081 [360.21ms per instance]
+**SHUFFLE
+[epoch=6 eta=0.0769231 clips=68 updates=100] update #63 (epoch 6.09524) per-action-ppl: 1.02427 per-input-ppl: 1.06722 per-sent-ppl: 291.61 err: 0.00857626 [359.88ms per instance]
+[epoch=6 eta=0.0769231 clips=60 updates=100] update #64 (epoch 6.19048) per-action-ppl: 1.01974 per-input-ppl: 1.0549 per-sent-ppl: 110.962 err: 0.00556132 [365.62ms per instance]
+[epoch=6 eta=0.0769231 clips=60 updates=100] update #65 (epoch 6.28571) per-action-ppl: 1.02306 per-input-ppl: 1.06378 per-sent-ppl: 191.074 err: 0.00755208 [350.15ms per instance]
+[epoch=6 eta=0.0769231 clips=62 updates=100] update #66 (epoch 6.38095) per-action-ppl: 1.02381 per-input-ppl: 1.06684 per-sent-ppl: 587.858 err: 0.00775022 [410.58ms per instance]
+[epoch=6 eta=0.0769231 clips=65 updates=100] update #67 (epoch 6.47619) per-action-ppl: 1.02961 per-input-ppl: 1.08316 per-sent-ppl: 1134.32 err: 0.0089608 [365.84ms per instance]
+[epoch=6 eta=0.0769231 clips=56 updates=100] update #68 (epoch 6.57143) per-action-ppl: 1.02427 per-input-ppl: 1.06655 per-sent-ppl: 467.457 err: 0.00741232 [390.22ms per instance]
+[epoch=6 eta=0.0769231 clips=68 updates=100] update #69 (epoch 6.66667) per-action-ppl: 1.03235 per-input-ppl: 1.09226 per-sent-ppl: 1443.71 err: 0.0104167 [346.13ms per instance]
+[epoch=6 eta=0.0769231 clips=56 updates=100] update #70 (epoch 6.7619) per-action-ppl: 1.02252 per-input-ppl: 1.0645 per-sent-ppl: 245.445 err: 0.00780934 [374.33ms per instance]
+[epoch=6 eta=0.0769231 clips=57 updates=100] update #71 (epoch 6.85714) per-action-ppl: 1.02234 per-input-ppl: 1.0605 per-sent-ppl: 294.645 err: 0.0072292 [393.19ms per instance]
+[epoch=6 eta=0.0769231 clips=67 updates=100] update #72 (epoch 6.95238) per-action-ppl: 1.02461 per-input-ppl: 1.06825 per-sent-ppl: 398.955 err: 0.00807728 [375.04ms per instance]
+**SHUFFLE
+[epoch=7 eta=0.0740741 clips=60 updates=100] update #73 (epoch 7.04762) per-action-ppl: 1.01885 per-input-ppl: 1.05227 per-sent-ppl: 86.1118 err: 0.00557348 [362.18ms per instance]
+[epoch=7 eta=0.0740741 clips=58 updates=100] update #74 (epoch 7.14286) per-action-ppl: 1.03101 per-input-ppl: 1.088 per-sent-ppl: 1388.76 err: 0.0089881 [359.08ms per instance]
+[epoch=7 eta=0.0740741 clips=54 updates=100] update #75 (epoch 7.2381) per-action-ppl: 1.0252 per-input-ppl: 1.07126 per-sent-ppl: 508.804 err: 0.00762749 [379.78ms per instance]
+Dev output in /tmp/parser_dev_eval.6251.txt
+  **dev (iter=75 epoch=7.2381)	llh=471.28 ppl: 1.03536 f1: 0 err: 0.00383993	[150 sents in 36029.5 ms]
+[epoch=7 eta=0.0740741 clips=63 updates=100] update #76 (epoch 7.33333) per-action-ppl: 1.02299 per-input-ppl: 1.06321 per-sent-ppl: 311.383 err: 0.0074426 [383.54ms per instance]
+[epoch=7 eta=0.0740741 clips=57 updates=100] update #77 (epoch 7.42857) per-action-ppl: 1.01803 per-input-ppl: 1.04961 per-sent-ppl: 92.3949 err: 0.00576483 [384.94ms per instance]
+[epoch=7 eta=0.0740741 clips=66 updates=100] update #78 (epoch 7.52381) per-action-ppl: 1.0204 per-input-ppl: 1.05579 per-sent-ppl: 150.652 err: 0.006442 [377.69ms per instance]
+[epoch=7 eta=0.0740741 clips=56 updates=100] update #79 (epoch 7.61905) per-action-ppl: 1.0183 per-input-ppl: 1.0517 per-sent-ppl: 58.8447 err: 0.00520741 [340.32ms per instance]
+[epoch=7 eta=0.0740741 clips=60 updates=100] update #80 (epoch 7.71429) per-action-ppl: 1.02702 per-input-ppl: 1.07572 per-sent-ppl: 820.651 err: 0.00870049 [381.35ms per instance]
+[epoch=7 eta=0.0740741 clips=64 updates=100] update #81 (epoch 7.80952) per-action-ppl: 1.01968 per-input-ppl: 1.05437 per-sent-ppl: 105.05 err: 0.00632275 [362.57ms per instance]
+[epoch=7 eta=0.0740741 clips=46 updates=100] update #82 (epoch 7.90476) per-action-ppl: 1.01758 per-input-ppl: 1.04859 per-sent-ppl: 72.3324 err: 0.00557591 [373.12ms per instance]
+[epoch=7 eta=0.0740741 clips=62 updates=100] update #83 (epoch 8) per-action-ppl: 1.02482 per-input-ppl: 1.06965 per-sent-ppl: 422.915 err: 0.00778368 [374.26ms per instance]
+**SHUFFLE
+[epoch=8 eta=0.0714286 clips=54 updates=100] update #84 (epoch 8.09524) per-action-ppl: 1.013 per-input-ppl: 1.03553 per-sent-ppl: 21.4197 err: 0.00400287 [361.76ms per instance]
+[epoch=8 eta=0.0714286 clips=53 updates=100] update #85 (epoch 8.19048) per-action-ppl: 1.02172 per-input-ppl: 1.05953 per-sent-ppl: 240.166 err: 0.00627082 [388.48ms per instance]
+[epoch=8 eta=0.0714286 clips=60 updates=100] update #86 (epoch 8.28571) per-action-ppl: 1.02361 per-input-ppl: 1.06508 per-sent-ppl: 364.881 err: 0.00731717 [385.08ms per instance]
+[epoch=8 eta=0.0714286 clips=57 updates=100] update #87 (epoch 8.38095) per-action-ppl: 1.02224 per-input-ppl: 1.06262 per-sent-ppl: 180.136 err: 0.00673358 [359.16ms per instance]
+[epoch=8 eta=0.0714286 clips=55 updates=100] update #88 (epoch 8.47619) per-action-ppl: 1.02015 per-input-ppl: 1.05669 per-sent-ppl: 130.851 err: 0.00650653 [371.25ms per instance]
+[epoch=8 eta=0.0714286 clips=51 updates=100] update #89 (epoch 8.57143) per-action-ppl: 1.01761 per-input-ppl: 1.04877 per-sent-ppl: 74.4543 err: 0.0052638 [375.39ms per instance]
+[epoch=8 eta=0.0714286 clips=62 updates=100] update #90 (epoch 8.66667) per-action-ppl: 1.02565 per-input-ppl: 1.07172 per-sent-ppl: 697.889 err: 0.00785178 [392.92ms per instance]
+[epoch=8 eta=0.0714286 clips=56 updates=100] update #91 (epoch 8.7619) per-action-ppl: 1.01721 per-input-ppl: 1.04749 per-sent-ppl: 68.5114 err: 0.00545058 [376.72ms per instance]
+[epoch=8 eta=0.0714286 clips=52 updates=100] update #92 (epoch 8.85714) per-action-ppl: 1.02077 per-input-ppl: 1.05737 per-sent-ppl: 161.503 err: 0.00695258 [376.88ms per instance]
+[epoch=8 eta=0.0714286 clips=56 updates=100] update #93 (epoch 8.95238) per-action-ppl: 1.01726 per-input-ppl: 1.04869 per-sent-ppl: 53.6521 err: 0.00498389 [353.02ms per instance]
+**SHUFFLE
+[epoch=9 eta=0.0689655 clips=53 updates=100] update #94 (epoch 9.04762) per-action-ppl: 1.01934 per-input-ppl: 1.05313 per-sent-ppl: 91.4647 err: 0.00597964 [358.23ms per instance]
+[epoch=9 eta=0.0689655 clips=61 updates=100] update #95 (epoch 9.14286) per-action-ppl: 1.01837 per-input-ppl: 1.05053 per-sent-ppl: 109.498 err: 0.0065509 [392.04ms per instance]
+[epoch=9 eta=0.0689655 clips=59 updates=100] update #96 (epoch 9.2381) per-action-ppl: 1.02014 per-input-ppl: 1.05606 per-sent-ppl: 122.47 err: 0.00597213 [365.77ms per instance]
+[epoch=9 eta=0.0689655 clips=59 updates=100] update #97 (epoch 9.33333) per-action-ppl: 1.01736 per-input-ppl: 1.04919 per-sent-ppl: 70.81 err: 0.00593939 [374.62ms per instance]
+[epoch=9 eta=0.0689655 clips=59 updates=100] update #98 (epoch 9.42857) per-action-ppl: 1.0163 per-input-ppl: 1.04507 per-sent-ppl: 51.3511 err: 0.00550105 [370.54ms per instance]
+[epoch=9 eta=0.0689655 clips=54 updates=100] update #99 (epoch 9.52381) per-action-ppl: 1.01747 per-input-ppl: 1.0482 per-sent-ppl: 65.1986 err: 0.0052649 [367.52ms per instance]
+[epoch=9 eta=0.0689655 clips=52 updates=100] update #100 (epoch 9.61905) per-action-ppl: 1.01529 per-input-ppl: 1.04271 per-sent-ppl: 38.0077 err: 0.00425354 [365ms per instance]
+Dev output in /tmp/parser_dev_eval.6251.txt
+  **dev (iter=100 epoch=9.61905)	llh=453.723 ppl: 1.03402 f1: 0 err: 0.00351079	[150 sents in 36033.6 ms]
