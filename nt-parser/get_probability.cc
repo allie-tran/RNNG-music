@@ -26,6 +26,7 @@
 #include "cnn/cfsm-builder.h"
 
 #include "nt-parser/oracle.h"
+#include "nt-parser/load-raw-sent.h"
 #include "nt-parser/pretrained.h"
 #include "nt-parser/compressed-fstream.h"
 #include "nt-parser/eval.h"
@@ -101,7 +102,7 @@ void InitCommandLine(int argc, char** argv, po::variables_map* conf) {
   }
 }
 
-struct ParserBuilder {
+struct RawParserBuilder {
   LSTMBuilder stack_lstm; // (layers, input, hidden, trainer)
   LSTMBuilder *buffer_lstm;
   LSTMBuilder action_lstm;
@@ -132,7 +133,7 @@ struct ParserBuilder {
 
   Parameters* p_cW;
 
-  explicit ParserBuilder(Model* model, const unordered_map<unsigned, vector<float>>& pretrained) :
+  explicit RawParserBuilder(Model* model, const unordered_map<unsigned, vector<float>>& pretrained) :
       stack_lstm(LAYERS, LSTM_INPUT_DIM, HIDDEN_DIM, model),
       action_lstm(LAYERS, ACTION_DIM, HIDDEN_DIM, model),
       const_lstm_fwd(LAYERS, LSTM_INPUT_DIM, LSTM_INPUT_DIM, model), // used to compose children of a node into a representation of the node
@@ -219,15 +220,12 @@ static bool IsActionForbidden_Discriminative(const string& a, char prev_a, unsig
 // this lets us use pretrained embeddings, when available, for words that were OOV in the
 // parser training data
 // set sample=true to sample rather than max
-vector<unsigned> log_prob_parser(ComputationGraph* hg,
-                     const parser::Sentence& sent,
-                     const vector<int>& correct_actions,
+vector<unsigned> get_log_probability(ComputationGraph* hg,
+                     const parser::RawSent& sent,
                      double *right,
                      bool is_evaluation,
                      bool sample = false) {
     vector<unsigned> results;
-    const bool build_training_graph = correct_actions.size() > 0;
-    bool apply_dropout = (DROPOUT && !is_evaluation);
     stack_lstm.new_graph(*hg);
     action_lstm.new_graph(*hg);
     const_lstm_fwd.new_graph(*hg);
@@ -236,19 +234,13 @@ vector<unsigned> log_prob_parser(ComputationGraph* hg,
     buffer_lstm->new_graph(*hg);
     buffer_lstm->start_new_sequence();
     action_lstm.start_new_sequence();
-    if (apply_dropout) {
-      stack_lstm.set_dropout(DROPOUT);
-      action_lstm.set_dropout(DROPOUT);
-      buffer_lstm->set_dropout(DROPOUT);
-      const_lstm_fwd.set_dropout(DROPOUT);
-      const_lstm_rev.set_dropout(DROPOUT);
-    } else {
-      stack_lstm.disable_dropout();
-      action_lstm.disable_dropout();
-      buffer_lstm->disable_dropout();
-      const_lstm_fwd.disable_dropout();
-      const_lstm_rev.disable_dropout();
-    }
+
+    stack_lstm.disable_dropout();
+    action_lstm.disable_dropout();
+    buffer_lstm->disable_dropout();
+    const_lstm_fwd.disable_dropout();
+    const_lstm_rev.disable_dropout();
+
     // variables in the computation graph representing the parameters
     Expression pbias = parameter(*hg, p_pbias);
     Expression S = parameter(*hg, p_S);
@@ -284,19 +276,15 @@ vector<unsigned> log_prob_parser(ComputationGraph* hg,
     // in the discriminative model, here we set up the buffer contents
     for (unsigned i = 0; i < sent.size(); ++i) {
         int wordid = sent.raw[i]; // this will be equal to unk at dev/test
-        if (build_training_graph && singletons.size() > wordid && singletons[wordid] && rand01() > 0.5)
-          wordid = sent.unk[i];
+        if (singletons.size() > wordid && singletons[wordid] && rand01() > 0.5)
+          wordid = sent.raw[i];
         Expression w = lookup(*hg, p_w, wordid);
 
         vector<Expression> args = {ib, w2l, w}; // learn embeddings
-        if (p_t && pretrained.count(sent.lc[i])) {  // include fixed pretrained vectors?
-          Expression t = const_lookup(*hg, p_t, sent.lc[i]);
+        if (p_t && pretrained.count(sent.raw[i])) {  // include fixed pretrained vectors?
+          Expression t = const_lookup(*hg, p_t, sent.raw[i]);
           args.push_back(t2l);
           args.push_back(t);
-        }
-        if (USE_POS) {
-          args.push_back(p2w);
-          args.push_back(lookup(*hg, p_pos, sent.pos[i]));
         }
         buffer[sent.size() - i] = rectify(affine_transform(args));
         bufferi[sent.size() - i] = i;
@@ -336,11 +324,7 @@ vector<unsigned> log_prob_parser(ComputationGraph* hg,
       Expression stack_summary = stack_lstm.back();
       Expression action_summary = action_lstm.back();
       Expression buffer_summary = buffer_lstm->back();
-      if (apply_dropout) {
-        stack_summary = dropout(stack_summary, DROPOUT);
-        action_summary = dropout(action_summary, DROPOUT);
-        buffer_summary = dropout(buffer_summary, DROPOUT);
-      }
+
       Expression p_t = affine_transform({pbias, S, stack_summary, B, buffer_summary, A, action_summary});
       Expression nlp_t = rectify(p_t);
       //if (build_training_graph) nlp_t = dropout(nlp_t, 0.4);
@@ -371,16 +355,7 @@ vector<unsigned> log_prob_parser(ComputationGraph* hg,
         }
       }
       unsigned action = model_action;
-      if (build_training_graph) {  // if we have reference actions (for training) use the reference action
-        if (action_count >= correct_actions.size()) {
-          cerr << "Correct action list exhausted, but not in final parser state.\n";
-          abort();
-        }
-        action = correct_actions[action_count];
-        if (model_action == action) { (*right)++; }
-      } else {
-        //cerr << "Chosen action: " << adict.Convert(action) << endl;
-      }
+
       //cerr << "prob ="; for (unsigned i = 0; i < adist.size(); ++i) { cerr << ' ' << adict.Convert(i) << ':' << adist[i]; }
       //cerr << endl;
       ++action_count;
@@ -479,10 +454,7 @@ vector<unsigned> log_prob_parser(ComputationGraph* hg,
         }
         Expression cfwd = const_lstm_fwd.back();
         Expression crev = const_lstm_rev.back();
-        if (apply_dropout) {
-          cfwd = dropout(cfwd, DROPOUT);
-          crev = dropout(crev, DROPOUT);
-        }
+
         Expression c = concatenate({cfwd, crev});
         Expression composed = rectify(affine_transform({cbias, cW, c}));
         stack_lstm.add_input(composed);
@@ -491,10 +463,7 @@ vector<unsigned> log_prob_parser(ComputationGraph* hg,
         is_open_paren.push_back(-1); // we just closed a paren at this position
       }
     }
-    if (build_training_graph && action_count != correct_actions.size()) {
-      cerr << "Unexecuted actions remain but final state reached!\n";
-      abort();
-    }
+
     assert(stack.size() == 2); // guard symbol, root
     assert(stacki.size() == 2);
     assert(buffer.size() == 1); // guard symbol
@@ -613,22 +582,20 @@ int main(int argc, char** argv) {
   Model model;
 
   parser::TopDownOracle corpus(&termdict, &adict, &posdict, &ntermdict);
-  parser::TopDownOracle dev_corpus(&termdict, &adict, &posdict, &ntermdict);
-  parser::TopDownOracle test_corpus(&termdict, &adict, &posdict, &ntermdict);
+  parser::TopDownRawOracle test_corpus(&termdict, &posdict);
   corpus.load_oracle(conf["training_data"].as<string>(), true);
-  corpus.load_bdata(conf["bracketing_dev_data"].as<string>());
 
   if (conf.count("words"))
     parser::ReadEmbeddings_word2vec(conf["words"].as<string>(), &termdict, &pretrained);
 
   // freeze dictionaries so we don't accidentaly load OOVs
-  termdict.Freeze();
-  termdict.SetUnk("UNK"); // we don't actually expect to use this often
+//  termdict.Freeze();
+//  termdict.SetUnk("UNK"); // we don't actually expect to use this often
      // since the Oracles are required to be "pre-UNKified", but this prevents
      // problems with UNKifying the lowercased data which needs to be loaded
-  adict.Freeze();
-  ntermdict.Freeze();
-  posdict.Freeze();
+//  adict.Freeze();
+//  ntermdict.Freeze();
+//  posdict.Freeze();
 
   {  // compute the singletons in the parser's training data
     unordered_map<unsigned, unsigned> counts;
@@ -641,8 +608,10 @@ int main(int argc, char** argv) {
 
   if (conf.count("test_data")) {
     cerr << "Loading test set\n";
-    test_corpus.load_oracle(conf["test_data"].as<string>(), false);
+    test_corpus.load_oracle(conf["test_data"].as<string>());
   }
+
+  cerr << "Number of sents: "  << test_corpus.sents.size() << '\n';
 
   for (unsigned i = 0; i < adict.size(); ++i) {
     const string& a = adict.Convert(i);
@@ -661,12 +630,13 @@ int main(int argc, char** argv) {
   for (unsigned i = 0; i < adict.size(); ++i)
     possible_actions[i] = i;
 
-  ParserBuilder parser(&model, pretrained);
+  RawParserBuilder parser(&model, pretrained);
   if (conf.count("model")) {
     ifstream in(conf["model"].as<string>().c_str());
     boost::archive::text_iarchive ia(in);
     ia >> model;
   }
+
   if (test_corpus.size() > 0) { // do test evaluation
         bool sample = conf.count("samples") > 0;
         unsigned test_size = test_corpus.size();
@@ -681,7 +651,7 @@ int main(int argc, char** argv) {
            dwords += sentence.size();
            for (unsigned z = 0; z < N_SAMPLES; ++z) {
              ComputationGraph hg;
-             vector<unsigned> pred = parser.log_prob_parser(&hg,sentence,actions,&right,sample,true);
+             vector<unsigned> pred = parser.get_log_probability(&hg,sentence,&right,sample,true);
              double lp = as_scalar(hg.incremental_forward());
              cout << sii << " ||| " << -lp << " |||";
              int ti = 0;
@@ -692,86 +662,81 @@ int main(int argc, char** argv) {
                  if (IMPLICIT_REDUCE_AFTER_SHIFT) {
                    cout << termdict.Convert(sentence.raw[ti++]) << ")";
                  } else {
-                   if (!sample) {
-                     string preterminal = "XX";
-                     cout << " (" << preterminal << ' ' << termdict.Convert(sentence.raw[ti++]) << ")";
-                   } else { // use this branch to surpress preterminals
-                     cout << ' ' << termdict.Convert(sentence.raw[ti++]);
-                   }
+                   cout << ' ' << termdict.Convert(sentence.raw[ti++]);
                  }
                } else cout << ')';
              }
              cout << endl;
            }
        }
-       ostringstream os;
-        os << "/tmp/parser_test_eval." << getpid() << ".txt";
-        const string pfx = os.str();
-        ofstream out(pfx.c_str());
-        t_start = chrono::high_resolution_clock::now();
-        for (unsigned sii = 0; sii < test_size; ++sii) {
-           const auto& sentence=test_corpus.sents[sii];
-           const vector<int>& actions=test_corpus.actions[sii];
-           dwords += sentence.size();
-           {  ComputationGraph hg;
-              parser.log_prob_parser(&hg,sentence,actions,&right,true);
-              double lp = as_scalar(hg.incremental_forward());
-              llh += lp;
-           }
-           ComputationGraph hg;
-           vector<unsigned> pred = parser.log_prob_parser(&hg,sentence,vector<int>(),&right,true);
-           int ti = 0;
-           for (auto a : pred) {
-             if (adict.Convert(a)[0] == 'N') {
-               out << '(' << ntermdict.Convert(action2NTindex.find(a)->second) << ' ';
-             } else if (adict.Convert(a)[0] == 'S') {
-               if (IMPLICIT_REDUCE_AFTER_SHIFT) {
-                 out << termdict.Convert(sentence.raw[ti++]) << ") ";
-               } else {
-                 if (true) {
-                   string preterminal = "XX";
-                   out << '(' << preterminal << ' ' << termdict.Convert(sentence.raw[ti++]) << ") ";
-                 } else { // use this branch to surpress preterminals
-                   out << termdict.Convert(sentence.raw[ti++]) << ' ';
-                 }
-               }
-             } else out << ") ";
-           }
-           out << endl;
-           double lp = 0;
-           trs += actions.size();
-        }
-        auto t_end = chrono::high_resolution_clock::now();
-        out.close();
-        double err = (trs - right) / trs;
-        cerr << "Test output in " << pfx << endl;
-        //parser::EvalBResults res = parser::Evaluate("foo", pfx);
-        std::string command="python remove_dev_unk.py "+ corpus.devdata +" "+pfx+" > evaluable.txt";
-        const char* cmd=command.c_str();
-        system(cmd);
-
-        std::string command2="EVALB/evalb -p EVALB/COLLINS.prm "+corpus.devdata+" evaluable.txt>evalbout.txt";
-        const char* cmd2=command2.c_str();
-
-        system(cmd2);
-
-        std::ifstream evalfile("evalbout.txt");
-        std::string lineS;
-        std::string brackstr="Bracketing FMeasure";
-        double newfmeasure=0.0;
-        std::string strfmeasure="";
-        bool found=0;
-        while (getline(evalfile, lineS) && !newfmeasure){
-                if (lineS.compare(0, brackstr.length(), brackstr) == 0) {
-                        //std::cout<<lineS<<"\n";
-                        strfmeasure=lineS.substr(lineS.size()-5, lineS.size());
-                        std::string::size_type sz;
-                        newfmeasure = std::stod (strfmeasure,&sz);
-                        //std::cout<<strfmeasure<<"\n";
-                }
-        }
-
-       cerr<<"F1score: "<<newfmeasure<<"\n";
-
+//       ostringstream os;
+//        os << "/tmp/parser_test_eval." << getpid() << ".txt";
+//        const string pfx = os.str();
+//        ofstream out(pfx.c_str());
+//        t_start = chrono::high_resolution_clock::now();
+//        for (unsigned sii = 0; sii < test_size; ++sii) {
+//           const auto& sentence=test_corpus.sents[sii];
+//           const vector<int>& actions=test_corpus.actions[sii];
+//           dwords += sentence.size();
+//           {  ComputationGraph hg;
+//              parser.log_prob_parser(&hg,sentence,actions,&right,true);
+//              double lp = as_scalar(hg.incremental_forward());
+//              llh += lp;
+//           }
+//           ComputationGraph hg;
+//           vector<unsigned> pred = parser.log_prob_parser(&hg,sentence,vector<int>(),&right,true);
+//           int ti = 0;
+//           for (auto a : pred) {
+//             if (adict.Convert(a)[0] == 'N') {
+//               out << '(' << ntermdict.Convert(action2NTindex.find(a)->second) << ' ';
+//             } else if (adict.Convert(a)[0] == 'S') {
+//               if (IMPLICIT_REDUCE_AFTER_SHIFT) {
+//                 out << termdict.Convert(sentence.raw[ti++]) << ") ";
+//               } else {
+//                 if (true) {
+//                   string preterminal = "XX";
+//                   out << '(' << preterminal << ' ' << termdict.Convert(sentence.raw[ti++]) << ") ";
+//                 } else { // use this branch to surpress preterminals
+//                   out << termdict.Convert(sentence.raw[ti++]) << ' ';
+//                 }
+//               }
+//             } else out << ") ";
+//           }
+//           out << endl;
+//           double lp = 0;
+//           trs += actions.size();
+//        }
+//        auto t_end = chrono::high_resolution_clock::now();
+//        out.close();
+//        double err = (trs - right) / trs;
+//        cerr << "Test output in " << pfx << endl;
+//        //parser::EvalBResults res = parser::Evaluate("foo", pfx);
+//        std::string command="python remove_dev_unk.py "+ corpus.devdata +" "+pfx+" > evaluable.txt";
+//        const char* cmd=command.c_str();
+//        system(cmd);
+//
+//        std::string command2="EVALB/evalb -p EVALB/COLLINS.prm "+corpus.devdata+" evaluable.txt>evalbout.txt";
+//        const char* cmd2=command2.c_str();
+//
+//        system(cmd2);
+//
+//        std::ifstream evalfile("evalbout.txt");
+//        std::string lineS;
+//        std::string brackstr="Bracketing FMeasure";
+//        double newfmeasure=0.0;
+//        std::string strfmeasure="";
+//        bool found=0;
+//        while (getline(evalfile, lineS) && !newfmeasure){
+//                if (lineS.compare(0, brackstr.length(), brackstr) == 0) {
+//                        //std::cout<<lineS<<"\n";
+//                        strfmeasure=lineS.substr(lineS.size()-5, lineS.size());
+//                        std::string::size_type sz;
+//                        newfmeasure = std::stod (strfmeasure,&sz);
+//                        //std::cout<<strfmeasure<<"\n";
+//                }
+//        }
+//
+//       cerr<<"F1score: "<<newfmeasure<<"\n";
+//
   }
 }

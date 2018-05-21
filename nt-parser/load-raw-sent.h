@@ -1,5 +1,5 @@
-#ifndef RAW_SENT_H_
-#define RAW_SENT_H_
+#ifndef PARSER_RAW_SENT_H_
+#define PARSER_RAW_SENT_H_
 
 #include <iostream>
 #include <vector>
@@ -19,12 +19,11 @@ struct RawSent {
 // base class for transition based parse oracles
 struct RawOracle {
   virtual ~RawOracle();
-  RawOracle(cnn::Dict* dict, cnn::Dict* adict, cnn::Dict* pdict) : d(dict), ad(adict), pd(pdict), sents() {}
+  RawOracle(cnn::Dict* dict, cnn::Dict* pdict) : d(dict), pd(pdict), sents() {}
   unsigned size() const { return sents.size(); }
   cnn::Dict* d;  // dictionary of terminal symbols
-  cnn::Dict* ad; // dictionary of action types
   cnn::Dict* pd; // dictionary of POS tags (preterminal symbols)
-  std::vector<Sentence> sents;
+  std::vector<RawSent> sents;
  protected:
   static void ReadSentenceView(const std::string& line, cnn::Dict* dict, std::vector<int>* sent);
 };
@@ -36,12 +35,10 @@ struct RawOracle {
 // tokens with OOVs replaced
 class TopDownRawOracle : public RawOracle {
  public:
-  TopDownRawOracle(cnn::Dict* termdict, cnn::Dict* adict, cnn::Dict* pdict, cnn::Dict* nontermdict) :
-      RawOracle(termdict, adict, pdict), nd(nontermdict) {}
-  // if is_training is true, then both the "raw" tokens and the mapped tokens
-  // will be read, and both will be available. if false, then only the mapped
-  // tokens will be available
-  void load_oracle(const std::string& file, bool is_training);
-  cnn::Dict* nd; // dictionary of nonterminal types
+  TopDownRawOracle(cnn::Dict* termdict, cnn::Dict* pdict) :
+      RawOracle(termdict, pdict) {}
+
+  void load_oracle(const std::string& file);
 };
+}
 #endif

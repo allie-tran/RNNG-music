@@ -10,7 +10,6 @@ using namespace std;
 
 namespace parser {
 
-
 RawOracle::~RawOracle() {}
 
 inline bool is_ws(char x) { //check whether the character is a space or tab delimiter
@@ -36,26 +35,19 @@ void RawOracle::ReadSentenceView(const std::string& line, cnn::Dict* dict, vecto
   assert(sent->size() > 0); // empty sentences not allowed
 }
 
-void TopDownRawOracle::load_oracle(const string& file, bool is_training) {
-  cerr << "Loading top-down oracle from " << file << " [" << (is_training ? "training" : "non-training") << "] ...\n";
+void TopDownRawOracle::load_oracle(const string& file) {
+  cerr << "Loading top-down oracle from " << file << "\n";
   cnn::compressed_ifstream in(file.c_str());
   assert(in);
+  string line;
   while(getline(in, line)) {
-    ++lc;
-    //cerr << "line number = " << lc << endl;
-    cur_acts.clear();
     if (line.size() == 0 || line[0] == '#') continue;
     sents.resize(sents.size() + 1);
     auto& cur_sent = sents.back();
-    ReadSentenceView(line, pd, &cur_sent.pos);
-    getline(in, line);
+//    ReadSentenceView(line, pd, &cur_sent.pos);
+//    getline(in, line);
     ReadSentenceView(line, d, &cur_sent.raw);
-    lc += 3;
   }
   cerr << "Loaded " << sents.size() << " sentences\n";
-  cerr << "    cumulative      action vocab size: " << ad->size() << endl;
-  cerr << "    cumulative    terminal vocab size: " << d->size() << endl;
-  cerr << "    cumulative nonterminal vocab size: " << nd->size() << endl;
-  cerr << "    cumulative         pos vocab size: " << pd->size() << endl;
 }
 } // namespace parser

@@ -352,3 +352,11 @@ Dev output in /tmp/parser_dev_eval.8599.txt
 [epoch=26 eta=0.0434783 clips=30 updates=100] update #279 (epoch 26.6667) per-action-ppl: 1.00305 per-input-ppl: 1.00848 per-sent-ppl: 2.09966 err: 0.00106864 [366.1ms per instance]
 [epoch=26 eta=0.0434783 clips=31 updates=100] update #280 (epoch 26.7619) per-action-ppl: 1.00331 per-input-ppl: 1.00908 per-sent-ppl: 2.12458 err: 0.00100939 [343.93ms per instance]
 [epoch=26 eta=0.0434783 clips=22 updates=100] update #281 (epoch 26.8571) per-action-ppl: 1.00749 per-input-ppl: 1.02066 per-sent-ppl: 5.08926 err: 0.00160492 [329.68ms per instance]
+[epoch=26 eta=0.0434783 clips=36 updates=100] update #282 (epoch 26.9524) per-action-ppl: 1.00728 per-input-ppl: 1.01952 per-sent-ppl: 6.70953 err: 0.00213537 [403.94ms per instance]
+**SHUFFLE
+[epoch=27 eta=0.0425532 clips=22 updates=100] update #283 (epoch 27.0476) per-action-ppl: 1.00346 per-input-ppl: 1.00956 per-sent-ppl: 2.26237 err: 0.00105807 [357.57ms per instance]
+[epoch=27 eta=0.0425532 clips=31 updates=100] update #284 (epoch 27.1429) per-action-ppl: 1.00292 per-input-ppl: 1.00799 per-sent-ppl: 2.00063 err: 0.00109391 [371.99ms per instance]
+[epoch=27 eta=0.0425532 clips=21 updates=100] update #285 (epoch 27.2381) per-action-ppl: 1.00309 per-input-ppl: 1.00841 per-sent-ppl: 2.21534 err: 0.000891438 [396.69ms per instance]
+[epoch=27 eta=0.0425532 clips=33 updates=100] update #286 (epoch 27.3333) per-action-ppl: 1.00285 per-input-ppl: 1.00791 per-sent-ppl: 1.93982 err: 0.00111593 [363.1ms per instance]
+[epoch=27 eta=0.0425532 clips=35 updates=100] update #287 (epoch 27.4286) per-action-ppl: 1.00518 per-input-ppl: 1.01433 per-sent-ppl: 3.63541 err: 0.00147994 [385.98ms per instance]
+[epoch=27 eta=0.0425532 clips=32 updates=100] update #288 (epoch 27.5238) per-action-ppl: 1.00471 per-input-ppl: 1.01254 per-sent-ppl: 3.26308 err: 0.00115207 [384.02ms per instance]

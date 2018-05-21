@@ -267,6 +267,33 @@ get_probability.cc.s:
 	cd /home/ubuntu/Duyen/rnng/build && $(MAKE) -f nt-parser/CMakeFiles/get_probability.dir/build.make nt-parser/CMakeFiles/get_probability.dir/get_probability.cc.s
 .PHONY : get_probability.cc.s
 
+load-raw-sent.o: load-raw-sent.cc.o
+
+.PHONY : load-raw-sent.o
+
+# target to build an object file
+load-raw-sent.cc.o:
+	cd /home/ubuntu/Duyen/rnng/build && $(MAKE) -f nt-parser/CMakeFiles/get_probability.dir/build.make nt-parser/CMakeFiles/get_probability.dir/load-raw-sent.cc.o
+.PHONY : load-raw-sent.cc.o
+
+load-raw-sent.i: load-raw-sent.cc.i
+
+.PHONY : load-raw-sent.i
+
+# target to preprocess a source file
+load-raw-sent.cc.i:
+	cd /home/ubuntu/Duyen/rnng/build && $(MAKE) -f nt-parser/CMakeFiles/get_probability.dir/build.make nt-parser/CMakeFiles/get_probability.dir/load-raw-sent.cc.i
+.PHONY : load-raw-sent.cc.i
+
+load-raw-sent.s: load-raw-sent.cc.s
+
+.PHONY : load-raw-sent.s
+
+# target to generate assembly for a file
+load-raw-sent.cc.s:
+	cd /home/ubuntu/Duyen/rnng/build && $(MAKE) -f nt-parser/CMakeFiles/get_probability.dir/build.make nt-parser/CMakeFiles/get_probability.dir/load-raw-sent.cc.s
+.PHONY : load-raw-sent.cc.s
+
 nt-parser-gen.o: nt-parser-gen.cc.o
 
 .PHONY : nt-parser-gen.o
@@ -409,6 +436,9 @@ help:
 	@echo "... get_probability.o"
 	@echo "... get_probability.i"
 	@echo "... get_probability.s"
+	@echo "... load-raw-sent.o"
+	@echo "... load-raw-sent.i"
+	@echo "... load-raw-sent.s"
 	@echo "... nt-parser-gen.o"
 	@echo "... nt-parser-gen.i"
 	@echo "... nt-parser-gen.s"

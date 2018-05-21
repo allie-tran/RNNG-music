@@ -7,6 +7,6 @@ target_link_libraries(nt-parser cnn ${Boost_LIBRARIES} z)
 ADD_EXECUTABLE(nt-parser-gen nt-parser-gen.cc oracle.cc pretrained.cc)
 target_link_libraries(nt-parser-gen cnn ${Boost_LIBRARIES} z)
 
-ADD_EXECUTABLE(get_probability get_probability.cc eval.cc oracle.cc pretrained.cc)
+ADD_EXECUTABLE(get_probability get_probability.cc load-raw-sent.cc eval.cc oracle.cc pretrained.cc)
 target_link_libraries(get_probability cnn ${Boost_LIBRARIES} z)
 
